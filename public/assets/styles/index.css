@@ -1,0 +1,279 @@
+@theme {
+  --breakpoint-*: initial;
+}
+
+@custom-variant 2xl (@media (max-width: 1380px));
+@custom-variant xl (@media (max-width: 1024px));
+@custom-variant lg (@media (max-width: 768px));
+@custom-variant sm (@media (max-width: 568px));
+
+@font-face {
+  font-family: 'Bebas Neue Cyrillic';
+  src: url('/assets/fonts/Bebas_Neue_Cyrillic/bebasneuecyrillic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --font-bebas: 'Bebas Neue Cyrillic', sans-serif;
+  --font-raleway: 'Raleway', sans-serif;
+}
+
+@layer base {
+  span,
+  p,
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply leading-none tracking-[4%];
+  }
+
+  body,
+  html {
+    min-height: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    height: 100%;
+    overflow-y: auto;
+    margin: 0;
+  }
+
+  button {
+    cursor: pointer;
+  }
+  h1 {
+    font-family: Bebas Neue Cyrillic;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 100%;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #c5c4c4 0%, #ffffff 43.47%, #8d8d8d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h2 {
+    font-family: Bebas Neue Cyrillic;
+    font-weight: 400;
+    font-size: 55px;
+    line-height: 100%;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #c5c4c4 0%, #ffffff 43.47%, #8d8d8d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h3 {
+    font-family: Bebas Neue Cyrillic;
+    font-weight: 400;
+    font-size: 32px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  h4 {
+    font-family: Bebas Neue Cyrillic;
+    font-weight: 400;
+    font-size: 24px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .navlink {
+    font-family: Raleway;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: all 0.25s ease-in-out;
+  }
+
+  /* .navlink:hover {
+    border-bottom: 1px solid white;
+  } */
+
+  .text-usual {
+    font-family: Raleway;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    color: #ffffff;
+  }
+
+  .button {
+    box-shadow: 0px 4px 25px 5px #3b87d578;
+    background-color: #3b87d5;
+    font-family: Bebas Neue Cyrillic;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 5%;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .button:hover {
+    background-color: #286bae;
+    box-shadow: 0px 4px 25px 7px #3b87d578;
+  }
+
+  .button-secondary {
+    border: 1px solid white;
+    font-family: Bebas Neue Cyrillic;
+    font-weight: 400;
+    font-style: Regular;
+    text-transform: uppercase;
+    font-size: 22px;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .gradient-border-rounded {
+    border: 1px solid;
+    border-image: linear-gradient(180deg, #383838 0%, #9e9e9e 50.48%) 1;
+    border-radius: 10px;
+    position: relative;
+    background: #1c1c1c;
+  }
+
+  .gradient-border-rounded::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 10px;
+    padding: 1px;
+    background: linear-gradient(180deg, #383838 0%, #9e9e9e 50.48%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .request-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    background-color: #000000ac;
+  }
+  .request-modal-overlay.active {
+    display: flex;
+  }
+  .request-modal {
+    background-color: black;
+    border-radius: 10px;
+    padding: 68px 59px 76px 59px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 334px;
+    box-shadow: 4px 4px 250px 10px #3b87d570;
+    min-width: 666px;
+  }
+  .checkbox-custom {
+    min-width: 20px;
+    max-width: 20px;
+    min-height: 20px;
+    max-height: 20px;
+    border-radius: 0;
+    background: transparent;
+    outline: 0;
+    border: 1px solid #555555;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .checkbox-custom:checked {
+    background: #555555;
+  }
+
+  .checkbox-custom:checked::before {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #burgerMenu {
+    right: -246px;
+  }
+
+  #burgerMenu.active {
+    right: 0;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 45px;
+    }
+    h2 {
+      font-size: 35px;
+    }
+    h3 {
+      font-size: 16px;
+    }
+    h4 {
+      font-size: 14px;
+    }
+
+    .text-usual {
+      font-size: 14px;
+    }
+    .button {
+      font-size: 18px;
+    }
+    .button-secondary {
+      font-size: 18px;
+    }
+    .request-modal {
+      padding: 44px 17px 47px 23px;
+      min-width: 90%;
+      width: 90%;
+    }
+  }
+  @media (max-width: 568px) {
+    .request-modal {
+      min-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.gradient-border-wrapper {
+    display: inline-block;
+    position: relative;
+    padding: 1px;
+    border-radius: 21px;
+    background: linear-gradient(180deg, #383838 0%, #9e9e9e 50.48%);
+    /* width: 376px; */
+    height: fit-content;
+}
+
+.blog-item {
+    padding: 31px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 374px; */
+    width: 100%;
+    border-radius: 20px;
+    background: black;
+}
+
+@media (max-width: 568px) {
+    .blog-item {
+        padding-top: 24px;
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+}
