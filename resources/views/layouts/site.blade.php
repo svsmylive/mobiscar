@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{{ $page->seo_title ?? $page->title ?? 'MobisCar' }}</title>
-    <meta name="description" content="{{ $page->seo_description ?? '' }}">
+    <title>{{ $page->title }}</title>
+    <meta name="description" content="{{ $page->description }}">
     <link rel="stylesheet" href="{{ asset('assets/styles/output.css') }}"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -12,7 +12,6 @@
         href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet"
     />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
 
@@ -35,27 +34,34 @@
         <p class="text-white text-center text-usual text-[22px] lg:text-[12px] mb-[48px] lg:mb-[29px]">
             Наши менеджеры свяжутся с вами
         </p>
-        <form action="https://..." method="post">
+        <form id="application-form" action="{{ route('application.send') }}" method="post">
+            @csrf
             <input
                 type="text"
                 name="name"
+                required
                 placeholder="Ваше имя"
                 class="outline-0 pt-[22px] pb-[19px] pl-[28px] text-[#686868] placeholder:text-[#686868] mb-[17px] lg:mb-[10px] w-full rounded-[10px] lg:text-[14px] lg:py-[14px] lg:pl-[15px] border border-[#363636] font-bebas font-normal not-italic text-[22px] leading-none tracking-[0.03em] placeholder:font-bebas placeholder:font-normal placeholder:not-italic placeholder:text-[22px] lg:placeholder:text-[14px] placeholder:leading-none placeholder:tracking-[0.03em]"
             />
+
             <input
+                id="phone-input"
                 type="text"
                 name="phone"
+                required
                 placeholder="Ваш ТЕЛЕФОН"
                 class="outline-0 pt-[22px] pb-[19px] pl-[28px] mb-[17px] text-[#686868] placeholder:text-[#686868] lg:mb-[10px] w-full rounded-[10px] lg:text-[14px] lg:py-[14px] lg:pl-[15px] border border-[#363636] font-bebas font-normal not-italic text-[22px] leading-none tracking-[0.03em] placeholder:font-bebas placeholder:font-normal placeholder:not-italic placeholder:text-[22px] lg:placeholder:text-[14px] placeholder:leading-none placeholder:tracking-[0.03em]"
             />
+
             <div class="flex gap-[16px] mb-[44px] w-full justify-start lg:mb-[26px]">
-                <input type="checkbox" class="checkbox-custom"/>
+                <input required id="privacy-checkbox" type="checkbox" class="checkbox-custom"/>
                 <p
                     class="font-raleway text-[#686868] font-normal not-italic text-[12px] leading-none tracking-[0.05em] lg:text-[10px] max-w-[429] lg:max-w-[200px]"
                 >
                     Я согласен(-на) с политикой конфиденциальности и даю согласие на получение рекламных сообщений
                 </p>
             </div>
+
             <button
                 type="submit"
                 class="button mx-auto block text-[25px] pt-[30px] pb-[25px] px-[99px] lg:px-[51px] lg:text-[16px] lg:py-[17px]"
@@ -66,9 +72,139 @@
     </div>
 </div>
 
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<div id="app-popup"
+     style="
+        display: none;
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #3B87D5;
+        color: white;
+        padding: 14px 26px;
+        border-radius: 10px;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 22px;
+        z-index: 99999;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+     ">
+</div>
 
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="{{ asset('/assets/js/shared.js') }}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        const form = document.getElementById("application-form");
+        const popup = document.getElementById("app-popup");
+        const modal = document.getElementById("requestModal");
+        const checkbox = document.getElementById("privacy-checkbox");
+        const phoneInput = document.getElementById("phone-input");
+
+        if (!form) {
+            console.error("❌ Форма не найдена (#application-form)");
+            return;
+        }
+
+        // ------------------------ ПОПАП ------------------------
+        function showPopup(message, isSuccess = true) {
+            if (!popup) return;
+
+            popup.textContent = message;
+
+            popup.style.background = isSuccess ? "#3B87D5" : "#D53939";
+            popup.style.display = "block";
+
+            // Плавное появление
+            requestAnimationFrame(() => {
+                popup.style.opacity = "1";
+            });
+
+            // Скрытие через 2.5 сек
+            setTimeout(() => {
+                popup.style.opacity = "0";
+
+                setTimeout(() => {
+                    popup.style.display = "none";
+                }, 300);
+
+            }, 5000);
+        }
+
+        // ------------------------ ЗАКРЫТИЕ МОДАЛКИ ------------------------
+        function closeModal() {
+            if (!modal) return;
+
+            modal.classList.add("opacity-0");
+
+            setTimeout(() => {
+                modal.classList.add("hidden");
+            }, 200);
+        }
+
+        // ------------------------ МАСКА ТЕЛЕФОНА ------------------------
+        phoneInput.addEventListener("input", () => {
+            let v = phoneInput.value.replace(/\D/g, "");
+
+            if (!v.startsWith("7")) v = "7" + v;
+
+            let r = "+7";
+
+            if (v.length > 1) r += " (" + v.substring(1, 4);
+            if (v.length >= 4) r += ")";
+            if (v.length >= 5) r += " " + v.substring(4, 7);
+            if (v.length >= 7) r += "-" + v.substring(7, 9);
+            if (v.length >= 9) r += "-" + v.substring(9, 11);
+
+            phoneInput.value = r;
+        });
+
+        function validPhone(phone) {
+            return phone.replace(/\D/g, "").length === 11;
+        }
+
+        // ------------------------ SUBMIT ------------------------
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            if (!checkbox.checked) {
+                showPopup("Вы должны согласиться с политикой!", false);
+                return;
+            }
+
+            if (!validPhone(phoneInput.value)) {
+                showPopup("Введите корректный номер телефона!", false);
+                return;
+            }
+
+            const fd = new FormData(form);
+            fd.set("phone", phoneInput.value.replace(/\D/g, ""));
+
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: fd,
+                    headers: {"X-Requested-With": "XMLHttpRequest"}
+                });
+
+                const data = await response.json();
+
+                showPopup(data.msg, data.success);
+
+                if (data.success) {
+                    form.reset();
+                    closeModal();
+                }
+
+            } catch (error) {
+                console.error(error);
+                showPopup("Ошибка отправки. Попробуйте позже.", false);
+            }
+        });
+    });
+</script>
 @stack('scripts')
 </body>
 </html>

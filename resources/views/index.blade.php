@@ -22,6 +22,7 @@
                     Записаться
                 </button>
                 <button
+                    onclick="window.location='{{ route('partners') }}'"
                     class="hover:backdrop-blur-sm duration-200 ease-in-out w-[296px] py-[30px] text-[white] uppercase font-bebas font-normal not-italic text-usual tracking-widest text-center leading-none rounded-[10px] border border-white text-[25px] cursor-pointer lg:text-[18px] lg:w-[185px] lg:pt-[17px] lg:pb-[13px]"
                 >
                     СТАТЬ ПАРТНЁРОМ
@@ -353,6 +354,7 @@
                             поддержку сильного бренда с репутацией.
                         </p>
                         <button
+                            onclick="window.location='{{ route('partners') }}'"
                             class="button px-[17px] mt-[18px] text-white py-[12px] rounded-[7px] font-bebas font-normal not-italic text-[18px] leading-none tracking-[0.03em] text-center"
                         >
                             СТАТЬ РЕЗИДЕНТОМ
