@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Screens\Article\ArticleEditScreen;
+use App\Orchid\Screens\Article\ArticleListScreen;
 use App\Orchid\Screens\Page\PageEditScreen;
 use App\Orchid\Screens\Page\PageListScreen;
 use App\Orchid\Screens\Partner\PartnerEditScreen;
@@ -38,3 +40,8 @@ Route::screen('pages/create', PageEditScreen::class)->name('platform.systems.pag
 Route::screen('partners', PartnerListScreen::class)->name('platform.systems.partners');
 Route::screen('partners/{partner}/edit', PartnerEditScreen::class)->name('platform.systems.partners.edit');
 Route::screen('partners/create', PartnerEditScreen::class)->name('platform.systems.partners.create');
+
+
+Route::screen('articles', ArticleListScreen::class)->name('platform.systems.articles');
+Route::screen('articles/{article}/edit', ArticleEditScreen::class)->name('platform.systems.articles.edit');
+Route::screen('articles/create', ArticleEditScreen::class)->name('platform.systems.articles.create');

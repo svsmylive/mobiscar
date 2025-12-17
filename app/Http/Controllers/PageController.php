@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Page;
 use App\Models\Partner;
 use Illuminate\View\View;
@@ -38,8 +39,12 @@ class PageController
     public function blog(): View
     {
         $page = Page::byCode('blog')->first();
+        $articles = Article::query()
+            ->orderByRaw('CASE WHEN `rank` IS NULL THEN 1 ELSE 0 END')
+            ->orderBy('rank', 'asc')
+            ->get();
 
-        return view('blog', ['page' => $page]);
+        return view('blog', ['page' => $page, 'articles' => $articles]);
     }
 
     public function contacts(): View
@@ -47,5 +52,13 @@ class PageController
         $page = Page::byCode('contacts')->first();
 
         return view('contacts', ['page' => $page]);
+    }
+
+    public function article(string $slug): View
+    {
+        $page = Page::byCode('blog')->first();
+        $article = Article::bySlug($slug)->first();
+
+        return view('article', ['page' => $page, 'article' => $article]);
     }
 }

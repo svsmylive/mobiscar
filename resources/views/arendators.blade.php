@@ -510,15 +510,8 @@
                     </div>
                     <div class="text-white content overflow-hidden duration-300 ease-in-out">
                         <p class="px-[25px] pt-[10px] text-usual">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum tortor ut accumsan
-                            laoreet. Nunc vitae
-                            quam elementum, sollicitudin ex sed, suscipit urna. Nunc eget lorem convallis, sagittis
-                            metus vel, tristique
-                            ipsum. Integer ultrices mauris at quam lobortis, non tristique justo consequat. Phasellus
-                            facilisis non mauris
-                            vel mattis. Maecenas convallis nunc diam, ut euismod magna faucibus nec. Aenean id malesuada
-                            mi, vitae volutpat
-                            purus
+                            РАСКРОЕЧНЫЙ СТОЛ, ШВЕЙНЫЕ МАШИНКИ, РАБОЧИЙ СТОЛ, ИНДИВИДУАЛЬНОЕ ОТОПЛЕНИЕ, ЗОНЫ ДЛЯ
+                            ХРАНЕНИЯ
                         </p>
                     </div>
                 </div>
@@ -536,15 +529,7 @@
                     </div>
                     <div class="text-white content overflow-hidden duration-300 ease-in-out">
                         <p class="px-[25px] pt-[10px] text-usual">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum tortor ut accumsan
-                            laoreet. Nunc vitae
-                            quam elementum, sollicitudin ex sed, suscipit urna. Nunc eget lorem convallis, sagittis
-                            metus vel, tristique
-                            ipsum. Integer ultrices mauris at quam lobortis, non tristique justo consequat. Phasellus
-                            facilisis non mauris
-                            vel mattis. Maecenas convallis nunc diam, ut euismod magna faucibus nec. Aenean id malesuada
-                            mi, vitae volutpat
-                            purus
+                            ПЕЧЬ, СЖАТЫЙ ВОЗДУХ, СТАНОК ДЛЯ ПРАВКИ ДИСКОВ, ПЕСКОСТРУЙНАЯ КАМЕРА, РАБОЧИЙ СТО
                         </p>
                     </div>
                 </div>
@@ -562,15 +547,9 @@
                     </div>
                     <div class="text-white content overflow-hidden duration-300 ease-in-out">
                         <p class="px-[25px] pt-[10px] text-usual">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum tortor ut accumsan
-                            laoreet. Nunc vitae
-                            quam elementum, sollicitudin ex sed, suscipit urna. Nunc eget lorem convallis, sagittis
-                            metus vel, tristique
-                            ipsum. Integer ultrices mauris at quam lobortis, non tristique justo consequat. Phasellus
-                            facilisis non mauris
-                            vel mattis. Maecenas convallis nunc diam, ut euismod magna faucibus nec. Aenean id malesuada
-                            mi, vitae volutpat
-                            purus
+                            СВЕТОВЫЕ РАМКИ, СТЕНДЫ ДЛЯ РЕЗКИ ПЛЕНОК, ПОДВОД СЖАТОГО ВОЗДУХА, БЕСПЫЛЕВЫЕ ПОЛЫ, РАБОЧИЙ
+                            СТОЛ,
+                            ЯЩИК ДЛЯ ИНСТРУМЕНТОВ
                         </p>
                     </div>
                 </div>
@@ -588,15 +567,7 @@
                     </div>
                     <div class="text-white content overflow-hidden duration-300 ease-in-out">
                         <p class="px-[25px] pt-[10px] text-usual">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum tortor ut accumsan
-                            laoreet. Nunc vitae
-                            quam elementum, sollicitudin ex sed, suscipit urna. Nunc eget lorem convallis, sagittis
-                            metus vel, tristique
-                            ipsum. Integer ultrices mauris at quam lobortis, non tristique justo consequat. Phasellus
-                            facilisis non mauris
-                            vel mattis. Maecenas convallis nunc diam, ut euismod magna faucibus nec. Aenean id malesuada
-                            mi, vitae volutpat
-                            purus
+                            РАБОЧИЙ СТОЛ, ЯЩИК ДЛЯ ИНСТРУМЕНТОВ, ПОДВОД СЖАТОГО ВОЗДУХА
                         </p>
                     </div>
                 </div>
@@ -614,15 +585,7 @@
                     </div>
                     <div class="text-white content overflow-hidden duration-300 ease-in-out">
                         <p class="px-[25px] pt-[10px] text-usual">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum tortor ut accumsan
-                            laoreet. Nunc vitae
-                            quam elementum, sollicitudin ex sed, suscipit urna. Nunc eget lorem convallis, sagittis
-                            metus vel, tristique
-                            ipsum. Integer ultrices mauris at quam lobortis, non tristique justo consequat. Phasellus
-                            facilisis non mauris
-                            vel mattis. Maecenas convallis nunc diam, ut euismod magna faucibus nec. Aenean id malesuada
-                            mi, vitae volutpat
-                            purus
+                            РАБОЧИЙ СТОЛ, ЯЩИК ДЛЯ ИНСТРУМЕНТОВ, ПОДВОД СЖАТОГО ВОЗДУХА
                         </p>
                     </div>
                 </div>
@@ -640,15 +603,7 @@
                     </div>
                     <div class="text-white content overflow-hidden duration-300 ease-in-out">
                         <p class="px-[25px] pt-[10px] text-usual">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum tortor ut accumsan
-                            laoreet. Nunc vitae
-                            quam elementum, sollicitudin ex sed, suscipit urna. Nunc eget lorem convallis, sagittis
-                            metus vel, tristique
-                            ipsum. Integer ultrices mauris at quam lobortis, non tristique justo consequat. Phasellus
-                            facilisis non mauris
-                            vel mattis. Maecenas convallis nunc diam, ut euismod magna faucibus nec. Aenean id malesuada
-                            mi, vitae volutpat
-                            purus
+                            ЗВУК, ВЫХЛОП, СИГНАЛИЗАЦИЯ, ОБВЕС
                         </p>
                     </div>
                 </div>

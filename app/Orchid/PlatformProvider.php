@@ -37,6 +37,8 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.systems.pages'),
             Menu::make('Партнеры')
                 ->route('platform.systems.partners'),
+            Menu::make('Статьи')
+                ->route('platform.systems.articles'),
         ];
     }
 
