@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="flex-1 flex gap-[20px] mt-[12px] wrapper-2-3">
-                        @foreach($articles->shift(3) as $articleTop)
+                        @foreach($articles->shift(3) ?? [] as $articleTop)
                             @php
                                 $wrapperClass = 'gradient-border-wrapper inline-block';
 
