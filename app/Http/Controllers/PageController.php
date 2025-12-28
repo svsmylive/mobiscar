@@ -12,8 +12,9 @@ class PageController
     public function index(): View
     {
         $page = Page::byCode('main')->first();
+        $partners = Partner::query()->select('name')->orderBy('rank')->get();
 
-        return view('index', ['page' => $page]);
+        return view('index', ['page' => $page, 'partners' => $partners]);
     }
 
     public function partners(): View

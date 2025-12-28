@@ -208,26 +208,13 @@
                 являющихся лидерами в своих отраслях
             </h3>
             <ul class="mt-[47px] flex justify-between px-[100px] xl:flex-col xl:items-center xl:gap-[17px] xl:mt-[52px] xl:px-[0]">
-                <li
-                    class="whitespace-nowrap text-[#7D7D7D] font-bebas font-normal not-italic text-[35px] leading-none tracking-widest uppercase"
-                >
-                    Big Motorsport
-                </li>
-                <li
-                    class="whitespace-nowrap text-[#7D7D7D] font-bebas font-normal not-italic text-[35px] leading-none tracking-widest uppercase"
-                >
-                    Art Tuning
-                </li>
-                <li
-                    class="whitespace-nowrap text-[#7D7D7D] font-bebas font-normal not-italic text-[35px] leading-none tracking-widest uppercase"
-                >
-                    Вариатор Краснодар
-                </li>
-                <li
-                    class="whitespace-nowrap text-[#7D7D7D] font-bebas font-normal not-italic text-[35px] leading-none tracking-widest uppercase"
-                >
-                    КРД Кузов
-                </li>
+                @foreach($partners as $partner)
+                    <li
+                        class="whitespace-nowrap text-[#7D7D7D] font-bebas font-normal not-italic text-[35px] leading-none tracking-widest uppercase"
+                    >
+                        {{ $partner->name }}
+                    </li>
+                @endforeach
             </ul>
         </section>
         <section class="pt-[195px] lg:pt-[101px]">
