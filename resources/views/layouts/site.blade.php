@@ -13,6 +13,7 @@
         rel="stylesheet"
     />
     <link rel="canonical" href="https://mobiscar-krasnodar.ru{{ request()->getPathInfo() }}">
+    <link rel="icon" href="{{ asset('/assets/images/favicon.ico') }}" type="image/x-icon">
     @stack('styles')
 </head>
 
