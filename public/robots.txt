@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /orchid
+Disallow: /login
+Disallow: /register
+Disallow: /api
+
+Sitemap: https://mobiscar-krasnodar.ru/sitemap.xml

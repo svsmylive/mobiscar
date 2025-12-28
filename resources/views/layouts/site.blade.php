@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet"
     />
+    <link rel="canonical" href="https://mobiscar-krasnodar.ru{{ request()->getPathInfo() }}">
     @stack('styles')
 </head>
 
