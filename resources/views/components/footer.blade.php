@@ -77,8 +77,8 @@
         <a href="" class="text-[#626262] font-raleway font-normal not-italic text-xs leading-none tracking-normal"
         >Согласие на обработку персональных данных</a
         >
-        <a href="" class="text-[#626262] font-raleway font-normal not-italic text-xs leading-none tracking-normal"
-        >Согласие на рассылку</a
-        >
+{{--        <a href="" class="text-[#626262] font-raleway font-normal not-italic text-xs leading-none tracking-normal"--}}
+{{--        >Согласие на рассылку</a--}}
+{{--        >--}}
     </div>
 </footer>
