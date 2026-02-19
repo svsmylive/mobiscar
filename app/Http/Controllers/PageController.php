@@ -6,7 +6,6 @@ use App\Models\Article;
 use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Service;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class PageController
@@ -70,7 +69,7 @@ class PageController
             ->find($service->partner_id);
 
         if (!$service) {
-            return redirect()->back();
+            return redirect()->route('index');
         }
 
         $images = $service->attachment()
