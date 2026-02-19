@@ -40,6 +40,16 @@
             @csrf
             <input
                 type="text"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+                style="position:absolute;left:-9999px;top:-9999px;height:1px;width:1px;opacity:0;"
+            />
+
+            <input type="hidden" name="hp_time" id="hp_time" value="">
+            <input
+                type="text"
                 name="name"
                 required
                 placeholder="Ваше имя"
@@ -58,6 +68,12 @@
             <input type="hidden" name="context_id" id="context_id" value="">
             <input type="hidden" name="context_title" id="context_title" value="">
             <input type="hidden" name="context_url" id="context_url" value="">
+            <input type="hidden" name="referrer" id="referrer" value="">
+            <input type="hidden" name="utm_source" id="utm_source" value="">
+            <input type="hidden" name="utm_medium" id="utm_medium" value="">
+            <input type="hidden" name="utm_campaign" id="utm_campaign" value="">
+            <input type="hidden" name="utm_content" id="utm_content" value="">
+            <input type="hidden" name="utm_term" id="utm_term" value="">
 
             <div class="flex gap-[16px] mb-[44px] w-full justify-start lg:mb-[26px]">
                 <input required id="privacy-checkbox" type="checkbox" class="checkbox-custom"/>
@@ -105,9 +121,7 @@
         const btn = e.target.closest('.requestBtn');
         if (!btn) return;
 
-        // открываешь модалку как у тебя уже сделано
-        // openModal();
-
+        // контекст (service/partner/general)
         const type = btn.getAttribute('data-ctx-type') || 'general';
         const id = btn.getAttribute('data-ctx-id') || '';
         const title = btn.getAttribute('data-ctx-title') || '';
@@ -122,9 +136,38 @@
         setVal('context_id', id);
         setVal('context_title', title);
         setVal('context_url', url);
-    });
-    document.addEventListener("DOMContentLoaded", () => {
 
+        // маркетинг
+        fillMarketingFields();
+        setHpTime();
+    });
+    function setHpTime() {
+        const el = document.getElementById('hp_time');
+        if (el) el.value = String(Date.now());
+    }
+
+    function getQueryParam(name) {
+        const url = new URL(window.location.href);
+        return url.searchParams.get(name) || '';
+    }
+
+    function fillMarketingFields() {
+        const setVal = (id, val) => {
+            const el = document.getElementById(id);
+            if (el) el.value = val;
+        };
+
+        setVal('referrer', document.referrer || '');
+
+        setVal('utm_source', getQueryParam('utm_source'));
+        setVal('utm_medium', getQueryParam('utm_medium'));
+        setVal('utm_campaign', getQueryParam('utm_campaign'));
+        setVal('utm_content', getQueryParam('utm_content'));
+        setVal('utm_term', getQueryParam('utm_term'));
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        setHpTime();
         const form = document.getElementById("application-form");
         const popup = document.getElementById("app-popup");
         const modal = document.getElementById("requestModal");

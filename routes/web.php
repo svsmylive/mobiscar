@@ -10,7 +10,9 @@ Route::get('arendators', [PageController::class, 'arendators'])->name('arendator
 Route::get('blog', [PageController::class, 'blog'])->name('blog');
 Route::get('/blog/article/{slug}', [PageController::class, 'article'])->name('article.show');
 Route::get('contacts', [PageController::class, 'contacts'])->name('contacts');
-Route::post('application', [ApplicationController::class, 'send'])->name('application.send');
+Route::post('application', [ApplicationController::class, 'send'])->middleware('throttle:application')->name(
+    'application.send'
+);
 Route::get('/services/{slug}', [PageController::class, 'serviceBySlug'])->name('service_by_slug');
 
 Route::fallback(function () {
