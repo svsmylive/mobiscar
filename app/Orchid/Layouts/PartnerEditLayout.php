@@ -10,11 +10,6 @@ use Orchid\Screen\Layouts\Rows;
 
 class PartnerEditLayout extends Rows
 {
-    /**
-     * The screen's layout elements.
-     *
-     * @return Field[]
-     */
     public function fields(): array
     {
         return [
@@ -22,57 +17,54 @@ class PartnerEditLayout extends Rows
                 ->type('text')
                 ->required()
                 ->max(255)
-                ->title(__('Название'))
-                ->placeholder(__('Название')),
+                ->title('Название')
+                ->placeholder('Название'),
 
             Input::make('partner.job_profile')
                 ->type('text')
-                ->title(__('Профиль работ'))
-                ->placeholder(__('Профиль работ')),
+                ->title('Профиль работ')
+                ->placeholder('Профиль работ'),
 
             Input::make('partner.experience_years')
                 ->type('text')
-                ->title(__('Лет опыта'))
-                ->placeholder(__('Лет опыта')),
-
-            Input::make('partner.services')
-                ->type('text')
-                ->title(__('Услуги'))
-                ->placeholder(__('Перечеслять через запятую')),
+                ->title('Лет опыта')
+                ->placeholder('Лет опыта'),
 
             TextArea::make('partner.description')
-                ->title(__('Описание'))
-                ->placeholder(__('Описание')),
+                ->title('Описание')
+                ->rows(5)
+                ->placeholder('Описание'),
 
             Picture::make('partner.image')
-                ->storage('public')
-                ->title('Картинка')
-                ->targetUrl(),
+                ->title('Фото партнёра')
+                ->acceptedFiles('image/*')
+                ->targetRelativeUrl()
+                ->help('Загрузите фото. В БД сохраняется относительный путь (удобно для фронта).'),
 
             Input::make('partner.phone')
                 ->type('text')
-                ->title(__('Телефон'))
-                ->placeholder(__('Формат: 7 (999) 999-99-99')),
+                ->title('Телефон')
+                ->placeholder('Формат: 7 (999) 999-99-99'),
 
             Input::make('partner.work_time')
                 ->type('text')
-                ->title(__('Время работы'))
-                ->placeholder(__('К примеру, ежедневно с 10:00 - 20:00')),
+                ->title('Время работы')
+                ->placeholder('К примеру, ежедневно с 10:00 - 20:00'),
 
             Input::make('partner.whatsapp_link')
                 ->type('text')
-                ->title(__('Ссылка на whatsapp'))
-                ->placeholder(__('Ссылка на whatsapp')),
+                ->title('Ссылка на WhatsApp')
+                ->placeholder('https://wa.me/...'),
 
             Input::make('partner.reviews_link')
                 ->type('text')
-                ->title(__('Ссылка на отзывы'))
-                ->placeholder(__('Ссылка на отзывы')),
+                ->title('Ссылка на отзывы')
+                ->placeholder('https://...'),
 
             Input::make('partner.rank')
-                ->type('text')
-                ->title(__('Порядковый номер на странице'))
-                ->placeholder(__('Порядковый номер на странице')),
+                ->type('number')
+                ->title('Порядковый номер на странице')
+                ->placeholder('Например: 10'),
         ];
     }
 }

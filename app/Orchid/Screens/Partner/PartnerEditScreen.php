@@ -16,34 +16,24 @@ use Orchid\Support\Facades\Toast;
 
 class PartnerEditScreen extends Screen
 {
-    /**
-     * @var Partner
-     */
-    public $partner;
+    public ?Partner $partner = null;
 
-    /**
-     * Fetch data to be displayed on the screen.
-     *
-     * @return array
-     */
     public function query(Partner $partner): iterable
     {
+        $this->partner = $partner;
+
         return [
             'partner' => $partner,
         ];
     }
 
-    /**
-     * The name of the screen displayed in the header.
-     */
     public function name(): ?string
     {
-        return $this->partner->exists ? 'Редактирование партнера' : 'Создание партнера';
+        return ($this->partner?->exists)
+            ? 'Редактирование партнёра'
+            : 'Создание партнёра';
     }
 
-    /**
-     * Display header description.
-     */
     public function description(): ?string
     {
         return '';
@@ -51,68 +41,57 @@ class PartnerEditScreen extends Screen
 
     public function layout(): iterable
     {
-        return
-            [
-                Layout::block(PartnerEditLayout::class)
-                    ->title(__('Общая информация о партнере'))
-                    ->vertical()
-                    ->commands(
-                        Button::make(__('Save'))
-                            ->type(Color::BASIC)
-                            ->icon('bs.check-circle')
-                            ->canSee($this->partner->exists)
-                            ->method('save')
-                    )
-            ];
+        return [
+            Layout::block(PartnerEditLayout::class)
+                ->title('Общая информация о партнёре')
+                ->vertical(),
+        ];
     }
 
     public function save(Partner $partner, Request $request): RedirectResponse
     {
-        if ($partner->exists) {
-            $partner->update(Arr::only($request->partner, $partner->getFillable()));
-        } else {
-            foreach ($request->partner as $key => $value) {
-                $partner->$key = $value;
-            }
-            $partner->save();
-        }
+        $data = $request->validate([
+            'partner.name' => ['required', 'string', 'max:255'],
+            'partner.job_profile' => ['nullable', 'string', 'max:255'],
+            'partner.experience_years' => ['nullable', 'string', 'max:255'],
+            'partner.description' => ['nullable', 'string'],
+            'partner.image' => ['nullable', 'string', 'max:2048'],
+            'partner.phone' => ['nullable', 'string', 'max:255'],
+            'partner.work_time' => ['nullable', 'string', 'max:255'],
+            'partner.whatsapp_link' => ['nullable', 'string', 'max:2048'],
+            'partner.reviews_link' => ['nullable', 'string', 'max:2048'],
+            'partner.rank' => ['nullable', 'integer'],
+        ])['partner'];
 
+        $partner->fill(Arr::only($data, $partner->getFillable()));
+        $partner->save();
 
-        Toast::info(__('Успешно'));
+        Toast::info('Успешно');
 
         return redirect()->route('platform.systems.partners');
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     *
-     */
     public function remove(Partner $partner): RedirectResponse
     {
         $partner->delete();
 
-        Toast::info(__('Удалено успешно'));
+        Toast::info('Удалено успешно');
 
         return redirect()->route('platform.systems.partners');
     }
 
-    /**
-     * The screen's action buttons.
-     *
-     * @return Action[]
-     */
     public function commandBar(): iterable
     {
         return [
-            Button::make(__('Сохранить'))
+            Button::make('Сохранить')
                 ->icon('bs.check-circle')
                 ->method('save'),
-            Button::make(__('Удалить'))
+
+            Button::make('Удалить')
                 ->icon('bs.trash3')
-                ->confirm(__('Подтверждение удаления'))
+                ->confirm('Подтверждение удаления')
                 ->method('remove')
-                ->canSee($this->partner->exists),
+                ->canSee((bool)($this->partner?->exists)),
         ];
     }
 }

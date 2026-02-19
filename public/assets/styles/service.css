@@ -1,0 +1,24 @@
+.examples-section__swiper {
+  /* padding: 0 10px; */
+}
+
+.examples-section__swiper .swiper-slide {
+  width: 355px;
+  height: 254px;
+}
+
+.examples-section__swiper .swiper-slide-content {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+@media (max-width: 786px) {
+  .examples-section__swiper .swiper-slide {
+    width: 157px;
+    height: 155px;
+  }
+}

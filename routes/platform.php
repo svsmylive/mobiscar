@@ -9,6 +9,8 @@ use App\Orchid\Screens\Page\PageListScreen;
 use App\Orchid\Screens\Partner\PartnerEditScreen;
 use App\Orchid\Screens\Partner\PartnerListScreen;
 use App\Orchid\Screens\PlatformScreen;
+use App\Orchid\Screens\Service\ServiceEditScreen;
+use App\Orchid\Screens\Service\ServiceListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
@@ -41,6 +43,9 @@ Route::screen('partners', PartnerListScreen::class)->name('platform.systems.part
 Route::screen('partners/{partner}/edit', PartnerEditScreen::class)->name('platform.systems.partners.edit');
 Route::screen('partners/create', PartnerEditScreen::class)->name('platform.systems.partners.create');
 
+Route::screen('services', ServiceListScreen::class)->name('platform.systems.services');
+Route::screen('services/{service}/edit', ServiceEditScreen::class)->name('platform.systems.services.edit');
+Route::screen('services/create', ServiceEditScreen::class)->name('platform.systems.services.create');
 
 Route::screen('articles', ArticleListScreen::class)->name('platform.systems.articles');
 Route::screen('articles/{article}/edit', ArticleEditScreen::class)->name('platform.systems.articles.edit');

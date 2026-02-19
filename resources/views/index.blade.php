@@ -6,7 +6,7 @@
 
 @section('content')
     <section id="main" class="bg-cover bg-center"
-             style="background-image: url({{ asset('assets/images/about.png') }});">
+             style="background-image: url({{ asset('assets/images/about.webp') }});">
         <div class="pt-[179px] pl-[107px] pb-[117px] lg:pl-[38px] lg:pt-[133px] lg:pb-[184px]">
             <h1 class="">Качество. Гарантия. Сервис.</h1>
             <p
@@ -50,144 +50,68 @@
             <ul
                 class="mt-[48px] grid grid-cols-4 grid-rows-2 gap-y-[37px] justify-items-center lg:mt-[39px] 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-1 lg:gap-y-[28px]"
             >
-                <li
-                    class="bg-[#131313] rounded-[20px] border border-[#131313] shadow-[0px_4px_4px_0px_#00000040] w-[302px] h-[346px] flex flex-col"
-                >
-                    <img src="{{ asset('assets/images/Services_1.png') }}" alt="" class="w-[267px] h-[168px] mt-[25px]
-                    ml-[17px]"/>
-                    <h5
-                        class="max-w-[280px] bg-transparent ml-[27px] mt-[25px] uppercase font-bebas text-[26px] font-normal not-italic text-white leading-none tracking-wider text-left flex-grow"
+                @foreach($services as $service)
+                    {{--                    <li--}}
+                    {{--                        class="bg-[#131313] rounded-[20px] border border-[#131313] shadow-[0px_4px_4px_0px_#00000040] w-[302px] h-[346px] flex flex-col"--}}
+                    {{--                    >--}}
+                    {{--                        <img src="{{ $service->image ?? asset('assets/images/Services_1.png') }}" alt="" class="w-[267px] h-[168px] mt-[25px]--}}
+                    {{--                    ml-[17px]"/>--}}
+                    {{--                        <h5--}}
+                    {{--                            class="max-w-[280px] bg-transparent ml-[27px] mt-[25px] uppercase font-bebas text-[26px] font-normal not-italic text-white leading-none tracking-wider text-left flex-grow"--}}
+                    {{--                        >--}}
+                    {{--                            {{ $service->name }}--}}
+                    {{--                        </h5>--}}
+                    {{--                        <button--}}
+                    {{--                            onclick="window.location='{{ route('service_by_slug', ['slug' => $service->slug]) }}'"--}}
+                    {{--                            class="button ml-[27px] mb-[25px] mt-[13px] text-white font-bebas px-[42px] py-[14px] font-normal not-italic text-usual leading-none tracking-widest text-center rounded-[7px] self-start"--}}
+                    {{--                        >--}}
+                    {{--                            ПОДРОБНЕЕ--}}
+                    {{--                        </button>--}}
+                    {{--                    </li>--}}
+                @endforeach
+            </ul>
+            <ul
+                class="w-fit gap-[12px] mt-[48px] grid grid-cols-3 gap-y-[49px] auto-rows-fr justify-items-center lg:mt-[39px] 2xl:grid-cols-2 [@media(max-width:945px)]:gap-y-[25px] [@media(max-width:945px)]:grid-cols-1"
+            >
+                @foreach($services as $service)
+                    <li
+                        class="bg-[#131313] rounded-[20px] border border-[#131313] shadow-[0px_4px_4px_0px_#00000040] w-[402px] flex flex-col sm:w-[302px]"
                     >
-                        Ремонт и замена двигателей
-                    </h5>
-                    <button
-                        onclick="window.location='{{ route('partners') }}'"
-                        class="button ml-[27px] mb-[25px] mt-[13px] text-white font-bebas px-[42px] py-[14px] font-normal not-italic text-usual leading-none tracking-widest text-center rounded-[7px] self-start"
-                    >
-                        ПОДРОБНЕЕ
-                    </button>
-                </li>
-                <li
-                    class="bg-[#131313] rounded-[20px] border border-[#131313] shadow-[0px_4px_4px_0px_#00000040] w-[302px] h-[346px] flex flex-col"
-                >
-                    <img src="{{ asset('assets/images/Services_2.png') }}" alt="" class="w-[267px] h-[168px] mt-[25px]
-                    ml-[17px]"/>
-                    <h5
-                        class="max-w-[280px] ml-[27px] mt-[25px] uppercase font-bebas text-[26px] font-normal not-italic text-white leading-none tracking-wider text-left flex-grow"
-                    >
-                        Ремонт турбокомпрессоров
-                    </h5>
-                    <button
-                        onclick="window.location='{{ route('partners') }}'"
-                        class="button ml-[27px] mb-[25px] mt-[13px] text-white font-bebas px-[42px] py-[14px] font-normal not-italic text-usual leading-none tracking-widest text-center rounded-[7px] self-start"
-                    >
-                        ПОДРОБНЕЕ
-                    </button>
-                </li>
-                <li
-                    class="bg-[#131313] rounded-[20px] border border-[#131313] shadow-[0px_4px_4px_0px_#00000040] w-[302px] h-[346px] flex flex-col"
-                >
-                    <img src="{{ asset('assets/images/Services_3.png') }}" alt="" class="w-[267px] h-[168px] mt-[25px]
-                    ml-[17px]"/>
-                    <h5
-                        class="max-w-[210px] ml-[27px] mt-[25px] uppercase font-bebas text-[26px] font-normal not-italic text-white leading-none tracking-wider text-left flex-grow"
-                    >
-                        Ремонт вариаторов и АКПП
-                    </h5>
-                    <button
-                        onclick="window.location='{{ route('partners') }}'"
-                        class="button ml-[27px] mb-[25px] mt-[13px] text-white font-bebas px-[42px] py-[14px] font-normal not-italic text-usual leading-none tracking-widest text-center rounded-[7px] self-start"
-                    >
-                        ПОДРОБНЕЕ
-                    </button>
-                </li>
-                <li
-                    class="bg-[#131313] rounded-[20px] border border-[#131313] shadow-[0px_4px_4px_0px_#00000040] w-[302px] h-[346px] flex flex-col"
-                >
-                    <img src="{{ asset('assets/images/Services_4.png') }}" alt="" class="w-[267px] h-[168px] mt-[25px]
-                    ml-[17px]"/>
-                    <h5
-                        class="max-w-[280px] ml-[27px] mt-[25px] uppercase font-bebas text-[26px] font-normal not-italic text-white leading-none tracking-wider text-left flex-grow"
-                    >
-                        Замена масла <br/>и фильтров
-                    </h5>
-                    <button
-                        onclick="window.location='{{ route('partners') }}'"
-                        class="button ml-[27px] mb-[25px] mt-[13px] text-white font-bebas px-[42px] py-[14px] font-normal not-italic text-usual leading-none tracking-widest text-center rounded-[7px] self-start"
-                    >
-                        ПОДРОБНЕЕ
-                    </button>
-                </li>
-                <li
-                    class="bg-[#131313] rounded-[20px] border border-[#131313] shadow-[0px_4px_4px_0px_#00000040] w-[302px] h-[346px] flex flex-col"
-                >
-                    <img src="{{ asset('assets/images/Services_5.png') }}" alt="" class="w-[267px] h-[168px] mt-[25px]
-                    ml-[17px]"/>
-                    <h5
-                        class="max-w-[280px] ml-[27px] mt-[25px] uppercase font-bebas text-[26px] font-normal not-italic text-white leading-none tracking-wider text-left flex-grow"
-                    >
-                        Аквапринт, классический и кованный карбон
-                    </h5>
-                    <button
-                        onclick="window.location='{{ route('partners') }}'"
-                        class="button ml-[27px] mb-[25px] mt-[13px] text-white font-bebas px-[42px] py-[14px] font-normal not-italic text-usual leading-none tracking-widest text-center rounded-[7px] self-start"
-                    >
-                        ПОДРОБНЕЕ
-                    </button>
-                </li>
-                <li
-                    class="bg-[#131313] rounded-[20px] border border-[#131313] shadow-[0px_4px_4px_0px_#00000040] w-[302px] h-[346px] flex flex-col"
-                >
-                    <img src="{{ asset('assets/images/Services_6.png') }}" alt="" class="w-[267px] h-[168px] mt-[25px]
-                    ml-[17px]"/>
-                    <h5
-                        class="max-w-[280px] ml-[27px] mt-[25px] uppercase font-bebas text-[26px] font-normal not-italic text-white leading-none tracking-wider text-left flex-grow"
-                    >
-                        Стайлинг<br/>
-                        и реставрация деталей
-                    </h5>
-                    <button
-                        onclick="window.location='{{ route('partners') }}'"
-                        class="button ml-[27px] mb-[25px] mt-[13px] text-white font-bebas px-[42px] py-[14px] font-normal not-italic text-usual leading-none tracking-widest text-center rounded-[7px] self-start"
-                    >
-                        ПОДРОБНЕЕ
-                    </button>
-                </li>
-                <li
-                    class="bg-[#131313] rounded-[20px] border border-[#131313] shadow-[0px_4px_4px_0px_#00000040] w-[302px] h-[346px] flex flex-col"
-                >
-                    <img src="{{ asset('assets/images/Services_7.png') }}" alt="" class="w-[267px] h-[168px] mt-[25px]
-                    ml-[17px]"/>
-                    <h5
-                        class="max-w-[280px] ml-[27px] mt-[25px] uppercase font-bebas text-[26px] font-normal not-italic text-white leading-none tracking-wider text-left flex-grow"
-                    >
-                        Русификация<br/>
-                        китайских авто
-                    </h5>
-                    <button
-                        onclick="window.location='{{ route('partners') }}'"
-                        class="button ml-[27px] mb-[25px] mt-[13px] text-white font-bebas px-[42px] py-[14px] font-normal not-italic text-usual leading-none tracking-widest text-center rounded-[7px] self-start"
-                    >
-                        ПОДРОБНЕЕ
-                    </button>
-                </li>
-                <li
-                    class="bg-[#131313] rounded-[20px] border border-[#131313] shadow-[0px_4px_4px_0px_#00000040] w-[302px] h-[346px] flex flex-col"
-                >
-                    <img src="{{ asset('assets/images/Services_8.png') }}" alt="" class="w-[267px] h-[168px] mt-[25px]
-                    ml-[17px]"/>
-                    <h5
-                        class="max-w-[280px] ml-[27px] mt-[25px] uppercase font-bebas text-[26px] font-normal not-italic text-white leading-none tracking-wider text-left flex-grow"
-                    >
-                        Покраска авто
-                    </h5>
-                    <button
-                        onclick="window.location='{{ route('partners') }}'"
-                        class="button ml-[27px] mb-[25px] mt-[13px] text-white font-bebas px-[42px] py-[14px] font-normal not-italic text-usual leading-none tracking-widest text-center rounded-[7px] self-start"
-                    >
-                        ПОДРОБНЕЕ
-                    </button>
-                </li>
+                        <div class="w-full flex justify-center mt-[38px] mb-[38px] sm:mt-[19px] sm:mb-[25px]">
+                            <img src="{{ $service->image ?? asset('assets/images/Services_1.png') }}" alt=""
+                                 class="w-[355px] h-[254px] rounded-[20px] sm:w-[267px] sm:h-[168px]"/>
+                        </div>
+
+                        <h5
+                            class="max-w-[340px] ml-[23px] mb-[18px] sm:mb-[13px] bg-transparent uppercase font-bebas text-[26px] font-normal not-italic text-white leading-none tracking-wider text-left"
+                        >
+                            {{ $service->name }}
+                        </h5>
+                        <p
+                            class="flex-1 max-w-[355px] ml-[23px] mb-0 text-white font-raleway font-normal not-italic text-[18px] leading-none tracking-[0.54px] sm:text-[14px] sm:mb-[25px]"
+                        >
+                            {{ $service->preview_text }}
+                        </p>
+                        <h6
+                            class="text-white text-right font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-[20px] leading-none tracking-[0.6px] mr-[24px] mb-[15px] sm:mr-0 sm:text-center sm:mb-[10.5px]"
+                        >
+                            {{ $service->price }} руб
+                        </h6>
+                        <div class="flex justify-between mx-[23px] gap-[13px] mb-[41px] sm:mb-[20.5px] sm:gap-[5px]">
+                            <button
+                                class="h-full requestBtn shadow-none uppercase button text-white flex-1 py-[14px] font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-base leading-none tracking-[0.48px] text-center rounded-[7px] self-start"
+                            >
+                                оставить заявку
+                            </button>
+                            <a
+                                href="{{ route('service_by_slug', ['slug' => $service->slug]) }}"
+                                class="border border-white uppercase button shadow-none bg-transparent text-white flex-1 py-[14px] font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-base leading-none tracking-[0.48px] text-center rounded-[7px] self-start"
+                            >
+                                подробнее
+                            </a>
+                        </div>
+                    </li>
+                @endforeach
             </ul>
             <div class="w-full flex flex-col items-center">
                 <button
@@ -430,36 +354,43 @@
                         style="background-image: url({{ asset('assets/images/Territory_3.png') }});"
                     ></div>
                 </li>
-
-                <div class="relative w-full">
-                    <div
-                        class="bg-[#121212] h-full z-1 -ml-[102px] lg:-ml-[40px] absolute left-0.5 -translate-x-0.5 w-screen"></div>
-                    <li
-                        class="z-10 w-full relative flex justify-between py-[58px] lg:pt-[48px] lg:pb-[60px] gap-[20px] lg:flex-col-reverse lg:px-0 lg:w-auto"
-                    >
-                        <div
-                            class="w-[579px] h-[309px] lg:w-full lg:mt-[28px] rounded-[20px] lg:h-[213px] lg:w-full bg-cover bg-center bg-no-repeat"
-                            style="background-image: url({{ asset('assets/images/Territory_4.png') }});"
-                        ></div>
-
-                        <div class="flex flex-col justify-center">
-                            <h5
-                                class="text-[#F3F3F3] font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-[40px] leading-none tracking-[0.03em] text-left lg:text-[30px] lg:text-center"
-                            >
-                                Ресторан, бильярд, приватная САУНА
-                            </h5>
-                            <p
-                                class="pt-[17px] max-w-[585px] text-[#F3F3F3] font-['Raleway'] font-normal not-italic text-[20px] leading-none tracking-normal lg:text-[14px] lg:text-center"
-                            >
-                                Качественный сервис — это не только о машинах, но и о людях. <br/><br/>
-                                На территории автоклуба расположен ресторан европейской кухни, бильярдный клуб и
-                                приватная сауна с бассейном и
-                                зоной отдыха
-                            </p>
-                        </div>
-                    </li>
-                </div>
             </ul>
+        </section>
+        <section class="pb-[49px] border border-[#121212] relative">
+            <div class="bg-[#121212] h-full z-1 -ml-[102px] lg:ml-0 absolute left-0.5 -translate-x-0.5 w-screen"></div>
+            <h5
+                class="lg:text-[30px] relative mt-[68px] z-10 mb-[34px] text-white text-center font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-[40px] leading-none tracking-[0.03em]"
+            >
+                Пока авто в ремонте
+            </h5>
+            <div class="relative z-10 flex w-full justify-center gap-[21px] xl:flex-col xl:items-center xl:px-[40px]">
+                <div class="w-[398px] xl:w-full">
+                    <img src="{{ asset('assets/images/Repair_1.png') }}" alt="" class="w-full mb-[28px]"/>
+                    <h5
+                        class="text-white font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-[26px] leading-none tracking-[0.78px] text-center"
+                    >
+                        Ресторан
+                    </h5>
+                </div>
+                <div class="w-[398px] xl:w-full">
+                    <img src="{{ asset('assets/images/Repair_2.png') }}" alt="" class="w-full mb-[28px]"/>
+
+                    <h5
+                        class="text-white font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-[26px] leading-none tracking-[0.78px] text-center"
+                    >
+                        Бильярд
+                    </h5>
+                </div>
+                <div class="w-[398px] xl:w-full">
+                    <img src="{{ asset('assets/images/Repair_3.png') }}" alt="" class="w-full mb-[28px]"/>
+
+                    <h5
+                        class="text-white font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-[26px] leading-none tracking-[0.78px] text-center"
+                    >
+                        Сауна
+                    </h5>
+                </div>
+            </div>
         </section>
     </div>
 

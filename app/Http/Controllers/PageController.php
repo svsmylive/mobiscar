@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Page;
 use App\Models\Partner;
+use App\Models\Service;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class PageController
@@ -13,19 +15,15 @@ class PageController
     {
         $page = Page::byCode('main')->first();
         $partners = Partner::query()->select('name')->orderBy('rank')->get();
+        $services = Service::query()->orderBy('rank')->get();
 
-        return view('index', ['page' => $page, 'partners' => $partners]);
+        return view('index', ['page' => $page, 'partners' => $partners, 'services' => $services]);
     }
 
     public function partners(): View
     {
         $page = Page::byCode('partners')->first();
-        $partners = Partner::query()->orderBy('rank')->get()
-            ->map(function ($partner) {
-                $partner->services = explode(',', $partner->services);
-
-                return $partner;
-            });
+        $partners = Partner::with(['services' => fn($query) => $query->orderBy('rank')])->orderBy('rank')->get();
 
         return view('partners', ['page' => $page, 'partners' => $partners]);
     }
@@ -61,5 +59,25 @@ class PageController
         $article = Article::bySlug($slug)->first();
 
         return view('article', ['page' => $page, 'article' => $article]);
+    }
+
+    public function serviceBySlug(string $slug)
+    {
+        $service = Service::where('slug', $slug)->first();
+        $page = Page::byCode('partners')->first();
+
+        $partner = Partner::with(['services' => fn($query) => $query->orderBy('rank')])
+            ->find($service->partner_id);
+
+        if (!$service) {
+            return redirect()->back();
+        }
+
+        $images = $service->attachment()
+            ->where('group', 'service-gallery')
+            ->get()
+            ->map(fn($a) => $a->url());
+
+        return view('service', ['page' => $page, 'service' => $service, 'partner' => $partner, 'images' => $images]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Orchid\Presenters\PartnerPresenter;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
@@ -17,7 +18,6 @@ class Partner extends Model
         'name',
         'job_profile',
         'experience_years',
-        'services',
         'image',
         'phone',
         'work_time',
@@ -26,6 +26,11 @@ class Partner extends Model
         'rank',
         'description',
     ];
+
+    public function services(): HasMany
+    {
+        return $this->hasMany(Service::class, 'partner_id', 'id');
+    }
 
     public function presenter(): PartnerPresenter
     {
