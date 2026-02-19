@@ -62,7 +62,11 @@
                             </p>
                             <div class="flex items-center justify-between lg:mt-[18px] xl:flex-col">
                                 <div class="flex gap-[11px] lg:flex-col relative xl:w-full mr-[20px] lg:mr-0">
-                                    <a href=""
+                                    <a href="javascript:void(0)"
+                                       data-ctx-type="partner"
+                                       data-ctx-id="{{ $partner->id }}"
+                                       data-ctx-title="{{ $partner->name }}"
+                                       data-ctx-url="{{ request()->fullUrl() }}"
                                        class="requestBtn button w-[268px] pt-[23px] pb-[20px] lg:w-auto lg:py-[20px] lg:mx-[22px] xl:flex-1"
                                     >ЗАКАЗАТЬ ОБРАТНЫЙ ЗВОНОК</a
                                     >

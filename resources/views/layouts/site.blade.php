@@ -54,6 +54,10 @@
                 placeholder="Ваш ТЕЛЕФОН"
                 class="outline-0 pt-[22px] pb-[19px] pl-[28px] mb-[17px] text-[#686868] placeholder:text-[#686868] lg:mb-[10px] w-full rounded-[10px] lg:text-[14px] lg:py-[14px] lg:pl-[15px] border border-[#363636] font-bebas font-normal not-italic text-[22px] leading-none tracking-[0.03em] placeholder:font-bebas placeholder:font-normal placeholder:not-italic placeholder:text-[22px] lg:placeholder:text-[14px] placeholder:leading-none placeholder:tracking-[0.03em]"
             />
+            <input type="hidden" name="context_type" id="context_type" value="general">
+            <input type="hidden" name="context_id" id="context_id" value="">
+            <input type="hidden" name="context_title" id="context_title" value="">
+            <input type="hidden" name="context_url" id="context_url" value="">
 
             <div class="flex gap-[16px] mb-[44px] w-full justify-start lg:mb-[26px]">
                 <input required id="privacy-checkbox" type="checkbox" class="checkbox-custom"/>
@@ -97,6 +101,28 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="{{ asset('/assets/js/shared.js') }}"></script>
 <script>
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.requestBtn');
+        if (!btn) return;
+
+        // открываешь модалку как у тебя уже сделано
+        // openModal();
+
+        const type = btn.getAttribute('data-ctx-type') || 'general';
+        const id = btn.getAttribute('data-ctx-id') || '';
+        const title = btn.getAttribute('data-ctx-title') || '';
+        const url = btn.getAttribute('data-ctx-url') || window.location.href;
+
+        const setVal = (id, val) => {
+            const el = document.getElementById(id);
+            if (el) el.value = val;
+        };
+
+        setVal('context_type', type);
+        setVal('context_id', id);
+        setVal('context_title', title);
+        setVal('context_url', url);
+    });
     document.addEventListener("DOMContentLoaded", () => {
 
         const form = document.getElementById("application-form");

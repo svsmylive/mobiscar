@@ -99,6 +99,10 @@
                         </h6>
                         <div class="flex justify-between mx-[23px] gap-[13px] mb-[41px] sm:mb-[20.5px] sm:gap-[5px]">
                             <button
+                                data-ctx-type="service"
+                                data-ctx-id="{{ $service->id }}"
+                                data-ctx-title="{{ $service->name }}"
+                                data-ctx-url="{{ request()->fullUrl() }}"
                                 class="h-full requestBtn shadow-none uppercase button text-white flex-1 py-[14px] font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-base leading-none tracking-[0.48px] text-center rounded-[7px] self-start"
                             >
                                 оставить заявку
