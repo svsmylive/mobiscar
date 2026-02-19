@@ -63,14 +63,15 @@ class PageController
     public function serviceBySlug(string $slug)
     {
         $service = Service::where('slug', $slug)->first();
-        $page = Page::byCode('partners')->first();
-
-        $partner = Partner::with(['services' => fn($query) => $query->orderBy('rank')])
-            ->find($service->partner_id);
 
         if (!$service) {
             return redirect()->route('index');
         }
+
+        $page = Page::byCode('partners')->first();
+
+        $partner = Partner::with(['services' => fn($query) => $query->orderBy('rank')])
+            ->find($service->partner_id);
 
         $images = $service->attachment()
             ->where('group', 'service-gallery')
