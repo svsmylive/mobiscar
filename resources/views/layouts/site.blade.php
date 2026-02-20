@@ -6,6 +6,7 @@
     <title>{{ $page->title ?? '404' }}</title>
     <meta name="description" content="{{ $page->description ?? '404' }}">
     <link rel="stylesheet" href="{{ asset('assets/styles/output.css') }}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
@@ -141,6 +142,7 @@
         fillMarketingFields();
         setHpTime();
     });
+
     function setHpTime() {
         const el = document.getElementById('hp_time');
         if (el) el.value = String(Date.now());
