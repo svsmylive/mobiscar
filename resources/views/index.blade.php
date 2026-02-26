@@ -41,7 +41,7 @@
         </div>
     </section>
     <div class="px-[102px] bg-[#060606] lg:px-[0px]">
-        <section class="pt-[139px] lg:pt-[68px]">
+        <section class="pt-[139px] lg:pt-[68px] flex flex-col items-center">
             <h1 class="text-center lg:text-[36px]">Полный спектр услуг</h1>
             <h4 class="mt-[19px] lg:mt-[13px]">
                 Все виды ремонта, обслуживания и детейлинга <br/>
