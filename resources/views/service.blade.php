@@ -45,7 +45,9 @@
                     <h3
                         class="mb-[17px] text-white font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-[44px] leading-none tracking-[1.32px] uppercase lg:text-[26px] whitespace-nowrap"
                     >
-                        {{ $service->price }} руб
+                        @if(isset($service->price))
+                            {{ $service->price }} руб
+                        @endif
                     </h3>
 
                     <button

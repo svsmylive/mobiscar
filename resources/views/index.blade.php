@@ -95,7 +95,10 @@
                         <h6
                             class="text-white text-right font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-[20px] leading-none tracking-[0.6px] mr-[24px] mb-[15px] sm:mr-0 sm:text-center sm:mb-[10.5px]"
                         >
-                            {{ $service->price }} руб
+                            @if(isset($service->price))
+                                {{ $service->price }} руб
+                            @endif
+
                         </h6>
                         <div class="flex justify-between mx-[23px] gap-[13px] mb-[41px] sm:mb-[20.5px] sm:gap-[5px]">
                             <button
