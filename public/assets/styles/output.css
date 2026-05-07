@@ -31,8 +31,8 @@
         --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         --default-font-family: var(--font-sans);
         --default-mono-font-family: var(--font-mono);
-        --font-bebas: "Bebas Neue Cyrillic", sans-serif;
-        --font-raleway: "Raleway", sans-serif;
+        --font-bebas: 'Bebas Neue Cyrillic', sans-serif;
+        --font-raleway: 'Raleway', sans-serif;
     }
 }
 @layer base {
@@ -313,9 +313,6 @@
     .mt-\[25px\] {
         margin-top: 25px;
     }
-    .mt-\[29px\] {
-        margin-top: 29px;
-    }
     .mt-\[30px\] {
         margin-top: 30px;
     }
@@ -345,9 +342,6 @@
     }
     .mt-\[45px\] {
         margin-top: 45px;
-    }
-    .mt-\[46px\] {
-        margin-top: 46px;
     }
     .mt-\[47px\] {
         margin-top: 47px;
@@ -448,9 +442,6 @@
     .mr-\[20px\] {
         margin-right: 20px;
     }
-    .mr-\[24px\] {
-        margin-right: 24px;
-    }
     .mr-\[32px\] {
         margin-right: 32px;
     }
@@ -468,9 +459,6 @@
     }
     .mb-\[14px\] {
         margin-bottom: 14px;
-    }
-    .mb-\[15px\] {
-        margin-bottom: 15px;
     }
     .mb-\[17px\] {
         margin-bottom: 17px;
@@ -634,17 +622,14 @@
     .h-\[480px\] {
         height: 480px;
     }
-    .h-auto {
-        height: auto;
-    }
     .h-full {
         height: 100%;
     }
     .h-screen {
         height: 100vh;
     }
-    .min-h-0 {
-        min-height: calc(var(--spacing) * 0);
+    .min-h-\[445px\] {
+        min-height: 445px;
     }
     .min-h-full {
         min-height: 100%;
@@ -696,6 +681,9 @@
     }
     .w-\[355px\] {
         width: 355px;
+    }
+    .w-\[360px\] {
+        width: 360px;
     }
     .w-\[383px\] {
         width: 383px;
@@ -781,17 +769,11 @@
     .max-w-\[571px\] {
         max-width: 571px;
     }
-    .max-w-\[581px\] {
-        max-width: 581px;
-    }
     .max-w-\[585px\] {
         max-width: 585px;
     }
     .max-w-\[611px\] {
         max-width: 611px;
-    }
-    .max-w-\[628px\] {
-        max-width: 628px;
     }
     .max-w-\[674px\] {
         max-width: 674px;
@@ -804,6 +786,9 @@
     }
     .min-w-\[300px\] {
         min-width: 300px;
+    }
+    .min-w-\[440px\] {
+        min-width: 440px;
     }
     .flex-1 {
         flex: 1;
@@ -1084,6 +1069,9 @@
     .border-b-\[\#2C2C2C\] {
         border-bottom-color: #2C2C2C;
     }
+    .border-b-white {
+        border-bottom-color: var(--color-white);
+    }
     .border-l-\[\#252525\] {
         border-left-color: #252525;
     }
@@ -1185,9 +1173,6 @@
     }
     .px-\[48px\] {
         padding-inline: 48px;
-    }
-    .px-\[54px\] {
-        padding-inline: 54px;
     }
     .px-\[62px\] {
         padding-inline: 62px;
@@ -1323,6 +1308,9 @@
     }
     .pt-\[250px\] {
         padding-top: 250px;
+    }
+    .pr-\[30px\] {
+        padding-right: 30px;
     }
     .pr-\[50px\] {
         padding-right: 50px;
@@ -2301,6 +2289,11 @@
             max-width: 98px;
         }
     }
+    .xl\:max-w-full {
+        @media (max-width: 1024px) {
+            max-width: 100%;
+        }
+    }
     .xl\:flex-1 {
         @media (max-width: 1024px) {
             flex: 1;
@@ -2321,11 +2314,6 @@
             flex-direction: column-reverse;
         }
     }
-    .xl\:flex-row {
-        @media (max-width: 1024px) {
-            flex-direction: row;
-        }
-    }
     .xl\:items-center {
         @media (max-width: 1024px) {
             align-items: center;
@@ -2339,11 +2327,6 @@
     .xl\:gap-\[17px\] {
         @media (max-width: 1024px) {
             gap: 17px;
-        }
-    }
-    .xl\:gap-\[20px\] {
-        @media (max-width: 1024px) {
-            gap: 20px;
         }
     }
     .xl\:gap-\[23px\] {
@@ -2791,6 +2774,11 @@
             width: 208px;
         }
     }
+    .lg\:w-\[250px\] {
+        @media (max-width: 768px) {
+            width: 250px;
+        }
+    }
     .lg\:w-auto {
         @media (max-width: 768px) {
             width: auto;
@@ -2839,6 +2827,11 @@
     .lg\:min-w-auto {
         @media (max-width: 768px) {
             min-width: auto;
+        }
+    }
+    .lg\:min-w-full {
+        @media (max-width: 768px) {
+            min-width: 100%;
         }
     }
     .lg\:flex-none {
@@ -2955,11 +2948,6 @@
             border-radius: 10px;
         }
     }
-    .lg\:rounded-\[20px\] {
-        @media (max-width: 768px) {
-            border-radius: 20px;
-        }
-    }
     .lg\:p-2 {
         @media (max-width: 768px) {
             padding: calc(var(--spacing) * 2);
@@ -2993,11 +2981,6 @@
     .lg\:px-\[12px\] {
         @media (max-width: 768px) {
             padding-inline: 12px;
-        }
-    }
-    .lg\:px-\[25px\] {
-        @media (max-width: 768px) {
-            padding-inline: 25px;
         }
     }
     .lg\:px-\[33px\] {
@@ -3329,16 +3312,6 @@
             margin-top: 19px;
         }
     }
-    .sm\:mr-0 {
-        @media (max-width: 568px) {
-            margin-right: calc(var(--spacing) * 0);
-        }
-    }
-    .sm\:mb-\[10\.5px\] {
-        @media (max-width: 568px) {
-            margin-bottom: 10.5px;
-        }
-    }
     .sm\:mb-\[13px\] {
         @media (max-width: 568px) {
             margin-bottom: 13px;
@@ -3424,11 +3397,6 @@
             padding-inline: 40px;
         }
     }
-    .sm\:text-center {
-        @media (max-width: 568px) {
-            text-align: center;
-        }
-    }
     .sm\:text-\[14px\] {
         @media (max-width: 568px) {
             font-size: 14px;
@@ -3446,8 +3414,8 @@
     }
 }
 @font-face {
-    font-family: "Bebas Neue Cyrillic";
-    src: url("/assets/fonts/Bebas_Neue_Cyrillic/bebasneuecyrillic.ttf") format("truetype");
+    font-family: 'Bebas Neue Cyrillic';
+    src: url('/assets/fonts/bebas-neue/BebasNeue-Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -3481,7 +3449,7 @@
         font-size: 70px;
         line-height: 100%;
         text-transform: uppercase;
-        background: linear-gradient( 90deg, #c5c4c4 0%, #ffffff 43.47%, #8d8d8d 100% );
+        background: linear-gradient(90deg, #c5c4c4 0%, #ffffff 43.47%, #8d8d8d 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -3491,7 +3459,7 @@
         font-size: 55px;
         line-height: 100%;
         text-transform: uppercase;
-        background: linear-gradient( 90deg, #c5c4c4 0%, #ffffff 43.47%, #8d8d8d 100% );
+        background: linear-gradient(90deg, #c5c4c4 0%, #ffffff 43.47%, #8d8d8d 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -3571,7 +3539,7 @@
         background: #1c1c1c;
     }
     .gradient-border-rounded::before {
-        content: "";
+        content: '';
         position: absolute;
         top: -1px;
         left: -1px;
@@ -3631,7 +3599,7 @@
         background: #555555;
     }
     .checkbox-custom:checked::before {
-        content: "✓";
+        content: '✓';
         position: absolute;
         color: white;
         font-size: 14px;

@@ -28,10 +28,10 @@
                 Партнёры
             </a>
             <a
-                href="{{ route('arendators') }}"
+                href="{{ route('join-club') }}"
                 class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic lg:mb-[10px] text-xl lg:text-[12px] leading-none tracking-normal"
             >
-                Арендаторам
+                Стать Партнером
             </a>
             <a
                 href="{{ route('blog') }}"

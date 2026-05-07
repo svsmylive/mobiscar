@@ -3,7 +3,7 @@
 @section('content')
     <div class="bg-[#060606] px-[104px] lg:px-[40px]">
         <section class="pt-[89px] pb-[161px] lg:pt-[57px] lg:pb-[90pxl]">
-            <h1 class="mb-[54px] text-center">Резиденты автоклуба</h1>
+            <h1 class="mb-[54px] text-center">Партнёры автоклуба</h1>
             <ul class="space-y-[49px]">
                 @foreach($partners as $partner)
                     <li

@@ -27,7 +27,7 @@ class PageController
         return view('partners', ['page' => $page, 'partners' => $partners]);
     }
 
-    public function arendators(): View
+    public function joinClub(): View
     {
         $page = Page::byCode('arendators')->first();
 

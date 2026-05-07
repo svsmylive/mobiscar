@@ -26,6 +26,7 @@ class ApplicationController
                 'utm_term' => ['nullable', 'string', 'max:255'],
                 'website' => ['nullable', 'string', 'max:255'],
                 'hp_time' => ['nullable', 'string', 'max:32'],
+                'activity_type' => ['nullable', 'sometimes', 'string'],
             ]);
 
             // 1) honeypot: если поле заполнено — бот
@@ -61,16 +62,26 @@ class ApplicationController
 
             $title = $data['context_title'] ?? null;
             $url = $data['context_url'] ?? null;
+            $activityType = $data['activity_type'] ?? null;
 
             $createdAt = now()->timezone('Europe/Moscow')->format('d.m.Y H:i');
 
             // Красивое HTML-сообщение для Telegram
             $lines = [];
-            $lines[] = "📩 <b>Новая заявка</b>";
+            if (!empty($activityType)) {
+                $lines[] = "📩 <b>Новая заявка \"Стать партнером\"</b>";
+            } else {
+                $lines[] = "📩 <b>Новая заявка</b>";
+            }
+
             $lines[] = "🕒 <b>Время:</b> {$createdAt}";
             $lines[] = "";
             $lines[] = "👤 <b>Имя:</b> " . e($data['name']);
             $lines[] = "📞 <b>Телефон:</b> <code>" . e($phoneNormalized) . "</code>";
+            if (!empty($activityType)) {
+                $lines[] = "🛠️ <b>Вид деятельности:</b> <code>" . e($activityType) . "</code>";
+            }
+
             $lines[] = "";
             $lines[] = "📌 <b>Источник:</b> {$typeLabel}";
 

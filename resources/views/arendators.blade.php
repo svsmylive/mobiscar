@@ -6,13 +6,18 @@
 
 @section('content')
     <main class="bg-black overflow-hidden">
-        <section class="pr-[104px] pl-[105px] xl:px-[41px] mt-[138px] lg:mt-[53px]" id="for-arendators">
+        <section class="pr-[104px] pl-[105px] xl:px-[41px] mt-[138px] lg:mt-[53px]" id="for-become-partner">
             <div class="flex flex-col items-center">
-                <h2 class="text-center lg:text-[30px]">Для арендаторов</h2>
+                <h2 class="text-center lg:text-[30px]">Для партнеров</h2>
                 <h4 class="mt-[19px] lg:mt-[17px] text-center max-w-[674px] lg:text-[18px]">
                     Развивайте свой бизнес в современном пространстве с готовой инфраструктурой и доступом к базе
                     клиентов
                 </h4>
+                <button
+                    class="mt-[25px] lg:mt-[18px] button becomePartnerBtn whitespace-nowrap rounded-[10px] w-[360px] py-[30px] text-[white] uppercase font-bebas font-normal not-italic text-usual tracking-widest text-center leading-none text-[25px] cursor-pointer lg:text-[18px] lg:w-[250px] lg:pt-[17px] lg:pb-[13px]"
+                >
+                    СТАТЬ ПАРТНЁРОМ
+                </button>
             </div>
 
             <div class="mt-[53px] lg:mt-[33px] flex justify-between items-center 2xl:flex-col lg:gap-[43px] gap-[54px]">

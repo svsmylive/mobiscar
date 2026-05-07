@@ -7,7 +7,7 @@
         <div class="flex justify-between w-full ml-[110px] 2xl:hidden">
             <a href="{{ route('index') }}" class="navlink hover:border-b-white">Главная </a>
             <a href="{{ route('partners') }}" class="navlink hover:border-b-white">Партнёры</a>
-            <a href="{{ route('arendators') }}" class="navlink hover:border-b-white">Арендаторам</a>
+            <a href="{{ route('join-club') }}" class="navlink hover:border-b-white">Стать Партнером</a>
             <a href="{{ route('blog') }}" class="navlink hover:border-b-white">Блог</a>
             <a href="{{ route('contacts') }}" class="navlink hover:border-b-white">Контакты</a>
             <div class="flex flex-col gap-[5px] items-start">
@@ -49,7 +49,7 @@
             <div class="mt-[36px] pl-[19px] flex flex-col gap-[15px]">
                 <a href="/main" class="navlink justify-start!">Главная </a>
                 <a href="/partners" class="navlink justify-start!">Партнёры</a>
-                <a href="/arendators/" class="navlink justify-start!">Арендаторам</a>
+                <a href="/join-club/" class="navlink justify-start!">Стать Партнером</a>
                 <a href="/blog" class="navlink justify-start!">Блог</a>
                 <a href="/contacts" class="navlink justify-start!">Контакты</a>
             </div>

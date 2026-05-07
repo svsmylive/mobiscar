@@ -22,8 +22,7 @@
                     Записаться
                 </button>
                 <button
-                    onclick="window.location='{{ route('partners') }}'"
-                    class="hover:backdrop-blur-sm duration-200 ease-in-out w-[296px] py-[30px] text-[white] uppercase font-bebas font-normal not-italic text-usual tracking-widest text-center leading-none rounded-[10px] border border-white text-[25px] cursor-pointer lg:text-[18px] lg:w-[185px] lg:pt-[17px] lg:pb-[13px]"
+                    class="becomePartnerBtn hover:backdrop-blur-sm duration-200 ease-in-out w-[296px] py-[30px] text-[white] uppercase font-bebas font-normal not-italic text-usual tracking-widest text-center leading-none rounded-[10px] border border-white text-[25px] cursor-pointer lg:text-[18px] lg:w-[185px] lg:pt-[17px] lg:pb-[13px]"
                 >
                     СТАТЬ ПАРТНЁРОМ
                 </button>
@@ -92,30 +91,21 @@
                         >
                             {{ $service->preview_text }}
                         </p>
-                        <h6
-                            class="text-white text-right font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-[20px] leading-none tracking-[0.6px] mr-[24px] mb-[15px] sm:mr-0 sm:text-center sm:mb-[10.5px]"
-                        >
-                            @if(isset($service->price))
-                                {{ $service->price }} руб
-                            @endif
-
-                        </h6>
-                        <div class="flex justify-between mx-[23px] gap-[13px] mb-[41px] sm:mb-[20.5px] sm:gap-[5px]">
-                            <button
-                                data-ctx-type="service"
-                                data-ctx-id="{{ $service->id }}"
-                                data-ctx-title="{{ $service->name }}"
-                                data-ctx-url="{{ request()->fullUrl() }}"
-                                class="h-full requestBtn shadow-none uppercase button text-white flex-1 py-[14px] font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-base leading-none tracking-[0.48px] text-center rounded-[7px] self-start"
-                            >
-                                оставить заявку
-                            </button>
+                        <div
+                            class="flex justify-between items-center mx-[23px] gap-[13px] mb-[41px] sm:mb-[20.5px] sm:gap-[5px] mt-[20px]">
                             <a
                                 href="{{ route('service_by_slug', ['slug' => $service->slug]) }}"
-                                class="border border-white uppercase button shadow-none bg-transparent text-white flex-1 py-[14px] font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-base leading-none tracking-[0.48px] text-center rounded-[7px] self-start"
+                                class="h-full shadow-none uppercase button text-white flex-1 py-[14px] font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-base leading-none tracking-[0.48px] text-center rounded-[7px] self-start"
                             >
                                 подробнее
                             </a>
+                            <h6
+                                class="flex-1 text-center text-white font-['Bebas_Neue_Cyrillic'] font-normal not-italic text-[20px] leading-none tracking-[0.6px]"
+                            >
+                                @if(isset($service->price))
+                                    от {{ $service->price }} руб
+                                @endif
+                            </h6>
                         </div>
                     </li>
                 @endforeach
@@ -150,7 +140,7 @@
         </section>
         <section class="pt-[195px] lg:pt-[101px]">
             <h2 class="text-center">
-                Резиденты Мобискар — те,<br class="hidden lg:inline"/>
+                Партнёры Мобискар — те,<br class="hidden lg:inline"/>
                 кому можно <br class="xl:hidden"/>доверить
                 <br class="hidden lg:inline"/>
                 любой автомобиль
@@ -173,7 +163,7 @@
                             <p
                                 class="mt-[24px] text-white font-raleway font-normal not-italic text-[18px] leading-none tracking-normal text-center max-w-[300px] lg:mt-[14px] lg:text-[14px] lg:max-w-[237px]"
                             >
-                                Каждый резидент — это мастер с опытом, собственным подходом и репутацией, заслуженной
+                                Каждый партнёр — это мастер с опытом, собственным подходом и репутацией, заслуженной
                                 годами практики.
                             </p>
                         </li>
@@ -223,59 +213,35 @@
                     </div>
                 </ul>
             </div>
-            <div class="w-full flex justify-center">
-                <button
-                    onclick="window.location='{{ route('partners') }}'"
-                    class="button text-[25px] mt-[46px] text-white font-bebas px-[54px] pt-[30px] pb-[25px] font-normal not-italic text-usual leading-none tracking-widest text-center rounded-[10px] shadow-[0px_4px_25px_5px_#4FC3E06E] self-start lg:text-[18px] lg:px-[25px] lg:pt-[17px] lg:pb-[13px]"
-                >
-                    ВЫБРАТЬ РЕЗИДЕНТА
-                </button>
-            </div>
         </section>
         <section class="pt-[177px] lg:pt-[154px]">
             <h2 class="mb-[66px] text-center lg:mb-[30px]">
                 ПРИСОЕДИНЯЙТЕСЬ <br class="hidden lg:inline"/>
                 К КЛУБУ МОБИСКАР
             </h2>
+
             <div
-                class="flex justify-between xl:items-center xl:gap-[20px] lg:gap-0 items-stretch xl:flex-col-reverse lg:items-center lg:px-[42px]"
+                class="flex justify-between xl:items-center gap-[20px] lg:gap-0 items-stretch xl:flex-col-reverse lg:items-center lg:px-[42px]"
             >
                 <div
-                    class="w-full max-w-[581px] h-[445px] bg-cover bg-center bg-no-repeat rounded-[20px] lg:w-full lg:mt-[30px] lg:h-[215px]"
+                    class="flex-1 min-w-[440px] h-[445px] min-h-[445px] bg-cover bg-center bg-no-repeat rounded-[20px] lg:min-w-full xl:w-full xl:max-w-full lg:mt-[30px] lg:h-[215px]"
                     style="background-image: url({{ asset('assets/images/Club.png')}});"
                 ></div>
-                <!-- <img
-                    src=./assets/images/Club.png"
-                    alt=""
-                    class="w-full max-w-[581px] h-auto min-h-0 shrink lg:mt-[30px] lg:h-[215px] lg:rounded-[20px]"
-                  /> -->
-                <div class="flex flex-col xl:flex-row lg:flex-col gap-[13px] max-w-[628px] flex-1">
-                    <div class="rounded-[20px] bg-[#121212] pt-[32px] pl-[30px] pb-[38px] h-full flex-1 lg:pt-[22px]">
+                <div class="flex flex-col gap-[13px] xl:max-w-full flex-1 items-center">
+                    <div
+                        class="rounded-[20px] bg-[#121212] pt-[32px] pl-[30px] pb-[38px] pr-[30px] flex-1 lg:pt-[22px] flex flex-col justify-center"
+                    >
                         <p
                             class="text-[#FEFEFE] font-raleway font-normal not-italic text-[22px] leading-none tracking-normals lg:text-[16px]"
                         >
-                            Если вы владелец автомобиля — запишитесь в клуб и доверьте свой автомобиль экспертам с
-                            опытом и репутацией.
-                        </p>
-                        <button
-                            class="button requestBtn px-[17px] mt-[29px] text-white py-[12px] rounded-[7px] font-bebas font-normal not-italic text-[18px] leading-none tracking-[0.03em] text-center"
-                        >
-                            Записаться на диагностику
-                        </button>
-                    </div>
-                    <div class="rounded-[20px] bg-[#121212] pt-[32px] pl-[30px] pb-[38px] flex-1 lg:pt-[22px]">
-                        <p
-                            class="text-[#FEFEFE] font-raleway font-normal not-italic text-[22px] leading-none tracking-normals lg:text-[16px]"
-                        >
-                            Если вы опытный специалист — станьте резидентом Мобискар и получите собственное
+                            Если вы опытный специалист — станьте партнёром Мобискар и получите собственное
                             пространство, клиентов и
                             поддержку сильного бренда с репутацией.
                         </p>
                         <button
-                            onclick="window.location='{{ route('partners') }}'"
-                            class="button px-[17px] mt-[18px] text-white py-[12px] rounded-[7px] font-bebas font-normal not-italic text-[18px] leading-none tracking-[0.03em] text-center"
+                            class="button becomePartnerBtn w-full px-[17px] mt-[18px] text-white py-[12px] rounded-[7px] font-bebas font-normal not-italic text-[18px] leading-none tracking-[0.03em] text-center"
                         >
-                            СТАТЬ РЕЗИДЕНТОМ
+                            СТАТЬ ПАРТНЁРОМ
                         </button>
                     </div>
                 </div>

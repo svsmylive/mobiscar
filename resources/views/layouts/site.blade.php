@@ -95,6 +95,85 @@
     </div>
 </div>
 
+<div id="becomePartnerModal" class="request-modal-overlay modal-wrapper">
+    <div class="request-modal modal-content relative">
+        <button
+            type="button"
+            class="closeBtn absolute top-[10px] right-[10px] w-[40px] h-[40px] before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-[20px] before:h-[1px] before:bg-white before:rotate-45 before:-translate-x-1/2 before:-translate-y-1/2 after:content-[''] after:absolute after:top-1/2 after:left-1/2 after:w-[20px] after:h-[1px] after:bg-white after:-rotate-45 after:-translate-x-1/2 after:-translate-y-1/2 hover:before:bg-gray-200 hover:after:bg-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2"
+        ></button>
+
+        <h2 class="mb-[17px] lg:text-[25px] text-center">
+            ЗАПОЛНИТЕ ЗАЯВКУ ЧТОБЫ <br class="inline"/>СТАТЬ ПАРТНЁРОМ
+        </h2>
+
+        <p class="text-white text-center text-usual text-[22px] lg:text-[12px] mb-[48px] lg:mb-[29px]">
+            Наши менеджеры свяжутся с вами
+        </p>
+
+        <form id="partner-form" action="{{ route('application.send') }}" method="post">
+            @csrf
+
+            <input
+                type="text"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+                style="position:absolute;left:-9999px;top:-9999px;height:1px;width:1px;opacity:0;"
+            />
+
+            <input type="hidden" name="hp_time" class="hp-time" value="">
+            <input type="hidden" name="context_type" value="partner">
+
+            <input
+                type="text"
+                name="name"
+                required
+                placeholder="Ваше имя"
+                class="outline-0 pt-[22px] pb-[19px] pl-[28px] text-[#686868] placeholder:text-[#686868] mb-[17px] lg:mb-[10px] w-full rounded-[10px] lg:text-[14px] lg:py-[14px] lg:pl-[15px] border border-[#363636] font-bebas font-normal not-italic text-[22px] leading-none tracking-[0.03em] placeholder:font-bebas placeholder:font-normal placeholder:not-italic placeholder:text-[22px] lg:placeholder:text-[14px] placeholder:leading-none placeholder:tracking-[0.03em]"
+            />
+
+            <input
+                id="partner-phone-input"
+                type="tel"
+                inputmode="numeric"
+                autocomplete="tel"
+                name="phone"
+                required
+                placeholder="Ваш телефон"
+                class="outline-0 pt-[22px] pb-[19px] pl-[28px] mb-[17px] text-[#686868] placeholder:text-[#686868] lg:mb-[10px] w-full rounded-[10px] lg:text-[14px] lg:py-[14px] lg:pl-[15px] border border-[#363636] font-bebas font-normal not-italic text-[22px] leading-none tracking-[0.03em] placeholder:font-bebas placeholder:font-normal placeholder:not-italic placeholder:text-[22px] lg:placeholder:text-[14px] placeholder:leading-none placeholder:tracking-[0.03em]"
+            />
+
+            <input
+                type="text"
+                name="activity_type"
+                required
+                placeholder="Вид деятельности"
+                class="outline-0 pt-[22px] pb-[19px] pl-[28px] mb-[17px] text-[#686868] placeholder:text-[#686868] lg:mb-[10px] w-full rounded-[10px] lg:text-[14px] lg:py-[14px] lg:pl-[15px] border border-[#363636] font-bebas font-normal not-italic text-[22px] leading-none tracking-[0.03em] placeholder:font-bebas placeholder:font-normal placeholder:not-italic placeholder:text-[22px] lg:placeholder:text-[14px] placeholder:leading-none placeholder:tracking-[0.03em]"
+            />
+
+            <div class="flex gap-[16px] mb-[44px] w-full justify-start lg:mb-[26px]">
+                <input
+                    id="partner-privacy-checkbox"
+                    required
+                    type="checkbox"
+                    class="checkbox-custom"
+                />
+
+                <p class="font-raleway text-[#686868] font-normal not-italic text-[12px] leading-none tracking-[0.05em] lg:text-[10px] max-w-[429px] lg:max-w-[200px]">
+                    Я согласен(-на) с политикой конфиденциальности и даю согласие на получение рекламных сообщений
+                </p>
+            </div>
+
+            <button
+                type="submit"
+                class="button mx-auto block text-[25px] pt-[30px] pb-[25px] px-[99px] lg:px-[51px] lg:text-[16px] lg:py-[17px]"
+            >
+                ОТПРАВИТЬ
+            </button>
+        </form>
+    </div>
+</div>
 <div id="app-popup"
      style="
         display: none;
@@ -170,112 +249,124 @@
 
     document.addEventListener("DOMContentLoaded", () => {
         setHpTime();
-        const form = document.getElementById("application-form");
         const popup = document.getElementById("app-popup");
-        const modal = document.getElementById("requestModal");
-        const checkbox = document.getElementById("privacy-checkbox");
-        const phoneInput = document.getElementById("phone-input");
 
-        if (!form) {
-            console.error("❌ Форма не найдена (#application-form)");
-            return;
-        }
+        const requestModal = document.getElementById("requestModal");
+        const partnerModal = document.getElementById("becomePartnerModal");
 
-        // ------------------------ ПОПАП ------------------------
+        const requestForm = document.getElementById("application-form");
+        const partnerForm = document.getElementById("partner-form");
+
         function showPopup(message, isSuccess = true) {
             if (!popup) return;
 
             popup.textContent = message;
-
             popup.style.background = isSuccess ? "#3B87D5" : "#D53939";
             popup.style.display = "block";
 
-            // Плавное появление
             requestAnimationFrame(() => {
                 popup.style.opacity = "1";
             });
 
-            // Скрытие через 2.5 сек
             setTimeout(() => {
                 popup.style.opacity = "0";
 
                 setTimeout(() => {
                     popup.style.display = "none";
                 }, 300);
-
             }, 5000);
         }
 
-        // ------------------------ ЗАКРЫТИЕ МОДАЛКИ ------------------------
-        function closeModal() {
+        function closeModal(modal) {
             if (!modal) return;
 
-            modal.classList.add("opacity-0");
-
-            setTimeout(() => {
-                modal.classList.add("hidden");
-            }, 200);
+            modal.classList.remove("active");
         }
 
-        // ------------------------ МАСКА ТЕЛЕФОНА ------------------------
-        phoneInput.addEventListener("input", () => {
-            let v = phoneInput.value.replace(/\D/g, "");
+        function maskPhone(input) {
+            if (!input) return;
 
-            if (!v.startsWith("7")) v = "7" + v;
+            input.addEventListener("input", () => {
+                let v = input.value.replace(/\D/g, "");
 
-            let r = "+7";
+                if (!v.startsWith("7")) v = "7" + v;
 
-            if (v.length > 1) r += " (" + v.substring(1, 4);
-            if (v.length >= 4) r += ")";
-            if (v.length >= 5) r += " " + v.substring(4, 7);
-            if (v.length >= 7) r += "-" + v.substring(7, 9);
-            if (v.length >= 9) r += "-" + v.substring(9, 11);
+                let r = "+7";
 
-            phoneInput.value = r;
-        });
+                if (v.length > 1) r += " (" + v.substring(1, 4);
+                if (v.length >= 4) r += ")";
+                if (v.length >= 5) r += " " + v.substring(4, 7);
+                if (v.length >= 7) r += "-" + v.substring(7, 9);
+                if (v.length >= 9) r += "-" + v.substring(9, 11);
+
+                input.value = r;
+            });
+        }
 
         function validPhone(phone) {
             return phone.replace(/\D/g, "").length === 11;
         }
 
-        // ------------------------ SUBMIT ------------------------
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
+        function initForm(form, modal) {
+            if (!form) return;
 
-            if (!checkbox.checked) {
-                showPopup("Вы должны согласиться с политикой!", false);
-                return;
+            const phoneInput = form.querySelector('input[name="phone"]');
+            const checkbox = form.querySelector('input[type="checkbox"]');
+            const hpTime = form.querySelector('input[name="hp_time"]');
+
+            if (hpTime) {
+                hpTime.value = String(Date.now());
             }
 
-            if (!validPhone(phoneInput.value)) {
-                showPopup("Введите корректный номер телефона!", false);
-                return;
-            }
+            maskPhone(phoneInput);
 
-            const fd = new FormData(form);
-            fd.set("phone", phoneInput.value.replace(/\D/g, ""));
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
 
-            try {
-                const response = await fetch(form.action, {
-                    method: "POST",
-                    body: fd,
-                    headers: {"X-Requested-With": "XMLHttpRequest"}
-                });
-
-                const data = await response.json();
-
-                showPopup(data.msg, data.success);
-
-                if (data.success) {
-                    form.reset();
-                    closeModal();
+                if (checkbox && !checkbox.checked) {
+                    showPopup("Вы должны согласиться с политикой!", false);
+                    return;
                 }
 
-            } catch (error) {
-                console.error(error);
-                showPopup("Ошибка отправки. Попробуйте позже.", false);
-            }
-        });
+                if (!phoneInput || !validPhone(phoneInput.value)) {
+                    showPopup("Введите корректный номер телефона!", false);
+                    return;
+                }
+
+                const fd = new FormData(form);
+                fd.set("phone", phoneInput.value.replace(/\D/g, ""));
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: "POST",
+                        body: fd,
+                        headers: {
+                            "X-Requested-With": "XMLHttpRequest"
+                        }
+                    });
+
+                    const data = await response.json();
+
+                    showPopup(data.msg, data.success);
+
+                    if (data.success) {
+                        form.reset();
+
+                        if (hpTime) {
+                            hpTime.value = String(Date.now());
+                        }
+
+                        closeModal(modal);
+                    }
+                } catch (error) {
+                    console.error(error);
+                    showPopup("Ошибка отправки. Попробуйте позже.", false);
+                }
+            });
+        }
+
+        initForm(requestForm, requestModal);
+        initForm(partnerForm, partnerModal);
     });
 </script>
 @stack('scripts')
