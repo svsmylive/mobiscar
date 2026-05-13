@@ -30,6 +30,13 @@ class Service extends Model
         return $this->belongsTo(Partner::class, 'partner_id', 'id');
     }
 
+    public function gallery()
+    {
+        return $this->attachment()
+            ->where('group', 'service-gallery')
+            ->orderBy('rank');
+    }
+
     public function presenter(): ServicePresenter
     {
         return new ServicePresenter($this);

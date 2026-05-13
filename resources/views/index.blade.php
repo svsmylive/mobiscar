@@ -76,8 +76,14 @@
                     <li
                         class="bg-[#131313] rounded-[20px] border border-[#131313] shadow-[0px_4px_4px_0px_#00000040] w-[402px] flex flex-col sm:w-[302px]"
                     >
+                        @php
+                            $preview = $service->gallery->first()?->url()
+                                ?? $service->image
+                                ?? asset('assets/images/Services_1.png');
+                        @endphp
+
                         <div class="w-full flex justify-center mt-[38px] mb-[38px] sm:mt-[19px] sm:mb-[25px]">
-                            <img src="{{ $service->image ?? asset('assets/images/Services_1.png') }}" alt=""
+                            <img src="{{ $preview }}" alt=""
                                  class="w-[355px] h-[254px] rounded-[20px] sm:w-[267px] sm:h-[168px]"/>
                         </div>
 

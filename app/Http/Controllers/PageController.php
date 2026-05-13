@@ -14,7 +14,10 @@ class PageController
     {
         $page = Page::byCode('main')->first();
         $partners = Partner::query()->select('name')->orderBy('rank')->get();
-        $services = Service::query()->orderBy('rank')->get();
+        $services = Service::query()
+            ->with(['gallery'])
+            ->orderBy('rank')
+            ->get();
 
         return view('index', ['page' => $page, 'partners' => $partners, 'services' => $services]);
     }
