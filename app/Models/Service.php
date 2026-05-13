@@ -34,7 +34,7 @@ class Service extends Model
     {
         return $this->attachment()
             ->where('group', 'service-gallery')
-            ->orderBy('rank');
+            ->orderBy('sort');
     }
 
     public function presenter(): ServicePresenter
