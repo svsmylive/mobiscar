@@ -8,6 +8,7 @@
         --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
         "Courier New", monospace;
         --color-gray-200: oklch(92.8% 0.006 264.531);
+        --color-gray-500: oklch(55.1% 0.027 264.364);
         --color-black: #000;
         --color-white: #fff;
         --spacing: 0.25rem;
@@ -211,6 +212,9 @@
     .top-\[10px\] {
         top: 10px;
     }
+    .top-\[20px\] {
+        top: 20px;
+    }
     .top-\[29px\] {
         top: 29px;
     }
@@ -219,6 +223,9 @@
     }
     .right-\[10px\] {
         right: 10px;
+    }
+    .right-\[20px\] {
+        right: 20px;
     }
     .right-\[44px\] {
         right: 44px;
@@ -276,6 +283,9 @@
     }
     .mt-\[5px\] {
         margin-top: 5px;
+    }
+    .mt-\[10px\] {
+        margin-top: 10px;
     }
     .mt-\[12px\] {
         margin-top: 12px;
@@ -451,6 +461,9 @@
     .mb-\[5px\] {
         margin-bottom: 5px;
     }
+    .mb-\[8px\] {
+        margin-bottom: 8px;
+    }
     .mb-\[10px\] {
         margin-bottom: 10px;
     }
@@ -534,6 +547,9 @@
     }
     .ml-\[14px\] {
         margin-left: 14px;
+    }
+    .ml-\[20px\] {
+        margin-left: 20px;
     }
     .ml-\[23px\] {
         margin-left: 23px;
@@ -627,6 +643,9 @@
     }
     .h-screen {
         height: 100vh;
+    }
+    .max-h-\[100\%\] {
+        max-height: 100%;
     }
     .min-h-\[445px\] {
         min-height: 445px;
@@ -835,6 +854,9 @@
     .cursor-pointer {
         cursor: pointer;
     }
+    .list-none {
+        list-style-type: none;
+    }
     .auto-rows-fr {
         grid-auto-rows: minmax(0, 1fr);
     }
@@ -894,6 +916,9 @@
     }
     .justify-items-center {
         justify-items: center;
+    }
+    .gap-2 {
+        gap: calc(var(--spacing) * 2);
     }
     .gap-4 {
         gap: calc(var(--spacing) * 4);
@@ -998,6 +1023,9 @@
     }
     .self-stretch {
         align-self: stretch;
+    }
+    .overflow-auto {
+        overflow: auto;
     }
     .overflow-hidden {
         overflow: hidden;
@@ -1246,6 +1274,9 @@
     .py-\[79px\] {
         padding-block: 79px;
     }
+    .pt-\[8px\] {
+        padding-top: 8px;
+    }
     .pt-\[10px\] {
         padding-top: 10px;
     }
@@ -1396,6 +1427,9 @@
     .pl-\[30px\] {
         padding-left: 30px;
     }
+    .pl-\[32px\] {
+        padding-left: 32px;
+    }
     .pl-\[43px\] {
         padding-left: 43px;
     }
@@ -1498,6 +1532,10 @@
     }
     .text-\[50px\] {
         font-size: 50px;
+    }
+    .leading-\[1\.4\] {
+        --tw-leading: 1.4;
+        line-height: 1.4;
     }
     .leading-\[100\%\] {
         --tw-leading: 100%;
@@ -1699,6 +1737,11 @@
         --tw-ease: var(--ease-in-out);
         transition-timing-function: var(--ease-in-out);
     }
+    .\*\:text-white {
+        :is(& > *) {
+            color: var(--color-white);
+        }
+    }
     .group-\[\.active\]\:top-1\/2 {
         &:is(:where(.group):is(.active) *) {
             top: calc(1/2 * 100%);
@@ -1802,6 +1845,24 @@
             left: calc(1/2 * 100%);
         }
     }
+    .before\:mt-2 {
+        &::before {
+            content: var(--tw-content);
+            margin-top: calc(var(--spacing) * 2);
+        }
+    }
+    .before\:inline-block {
+        &::before {
+            content: var(--tw-content);
+            display: inline-block;
+        }
+    }
+    .before\:h-2 {
+        &::before {
+            content: var(--tw-content);
+            height: calc(var(--spacing) * 2);
+        }
+    }
     .before\:h-\[1px\] {
         &::before {
             content: var(--tw-content);
@@ -1812,6 +1873,12 @@
         &::before {
             content: var(--tw-content);
             height: 4px;
+        }
+    }
+    .before\:w-2 {
+        &::before {
+            content: var(--tw-content);
+            width: calc(var(--spacing) * 2);
         }
     }
     .before\:w-\[4px\] {
@@ -1830,6 +1897,12 @@
         &::before {
             content: var(--tw-content);
             width: 100%;
+        }
+    }
+    .before\:shrink-0 {
+        &::before {
+            content: var(--tw-content);
+            flex-shrink: 0;
         }
     }
     .before\:-translate-x-1\/2 {
@@ -1870,6 +1943,13 @@
             border-radius: calc(infinity * 1px);
         }
     }
+    .before\:border {
+        &::before {
+            content: var(--tw-content);
+            border-style: var(--tw-border-style);
+            border-width: 1px;
+        }
+    }
     .before\:border-t {
         &::before {
             content: var(--tw-content);
@@ -1881,6 +1961,12 @@
         &::before {
             content: var(--tw-content);
             border-color: #818181;
+        }
+    }
+    .before\:border-gray-500 {
+        &::before {
+            content: var(--tw-content);
+            border-color: var(--color-gray-500);
         }
     }
     .before\:bg-\[\#000000B2\] {
@@ -3178,6 +3264,11 @@
             padding-left: 15px;
         }
     }
+    .lg\:pl-\[20px\] {
+        @media (max-width: 768px) {
+            padding-left: 20px;
+        }
+    }
     .lg\:pl-\[38px\] {
         @media (max-width: 768px) {
             padding-left: 38px;
@@ -3419,6 +3510,9 @@
     font-weight: normal;
     font-style: normal;
 }
+ol {
+    list-style: auto;
+}
 @layer base {
     span, p, a, h1, h2, h3, h4, h5, h6 {
         --tw-leading: 1;
@@ -3580,6 +3674,22 @@
         box-shadow: 4px 4px 250px 10px #3b87d570;
         min-width: 666px;
     }
+    .modal {
+        background-color: black;
+        border-radius: 10px;
+        padding: 50px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 4px 4px 250px 10px #3b87d570;
+    }
+    .modal {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .modal::-webkit-scrollbar {
+        display: none;
+    }
     .checkbox-custom {
         min-width: 20px;
         max-width: 20px;
@@ -3641,9 +3751,16 @@
             min-width: 90%;
             width: 90%;
         }
+        .modal {
+            padding: 20px 30px;
+            min-width: 90%;
+        }
     }
     @media (max-width: 568px) {
         .request-modal {
+            min-width: 100%;
+        }
+        .modal {
             min-width: 100%;
         }
     }

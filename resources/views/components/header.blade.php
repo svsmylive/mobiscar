@@ -9,15 +9,9 @@
                class="navlink hover:border-b-white {{ request()->routeIs('index') ? 'border-b-white' : '' }}">
                 Главная
             </a>
-
-            <a href="{{ route('partners') }}"
-               class="navlink hover:border-b-white {{ request()->routeIs('partners') ? 'border-b-white' : '' }}">
-                Партнёры
-            </a>
-
-            <a href="{{ route('join-club') }}"
-               class="navlink hover:border-b-white {{ request()->routeIs('join-club') ? 'border-b-white' : '' }}">
-                Стать Партнером
+            <a href="/#services"
+               class="navlink hover:border-b-white">
+                Услуги
             </a>
 
             <a href="{{ route('blog') }}"
@@ -28,6 +22,16 @@
             <a href="{{ route('contacts') }}"
                class="navlink hover:border-b-white {{ request()->routeIs('contacts') ? 'border-b-white' : '' }}">
                 Контакты
+            </a>
+
+            <a href="{{ route('partners') }}"
+               class="navlink hover:border-b-white {{ request()->routeIs('partners') ? 'border-b-white' : '' }}">
+                Партнёры
+            </a>
+
+            <a href="{{ route('join-club') }}"
+               class="navlink hover:border-b-white {{ request()->routeIs('join-club') ? 'border-b-white' : '' }}">
+                Стать Партнером
             </a>
             <div class="flex flex-col gap-[5px] items-start">
                 <a href="" class="navlink">г. Краснодар, ул. Васнецова 20</a>
@@ -67,11 +71,12 @@
             </div>
 
             <div class="mt-[36px] pl-[19px] flex flex-col gap-[15px]">
-                <a href="/main" class="navlink justify-start!">Главная </a>
-                <a href="/partners" class="navlink justify-start!">Партнёры</a>
-                <a href="/join-club/" class="navlink justify-start!">Стать Партнером</a>
+                <a href="/" class="navlink justify-start!">Главная </a>
+                <a href="/#services" class="navlink justify-start!">Услуги </a>
                 <a href="/blog" class="navlink justify-start!">Блог</a>
                 <a href="/contacts" class="navlink justify-start!">Контакты</a>
+                <a href="/partners" class="navlink justify-start!">Партнёры</a>
+                <a href="/join-club/" class="navlink justify-start!">Стать Партнером</a>
             </div>
 
             <div class="pl-[19px] mt-[63px]">

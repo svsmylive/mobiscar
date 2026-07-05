@@ -22,16 +22,10 @@
                 Главная
             </a>
             <a
-                href="{{ route('partners') }}"
-                class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic lg:mb-[10px] text-xl lg:text-[12px] leading-none tracking-normal"
+                href="/#services"
+                class="text-[#F5F5F5] mb-[14px] font-raleway font-normal lg:mb-[10px] not-italic text-xl lg:text-[12px] leading-none tracking-normal"
             >
-                Партнёры
-            </a>
-            <a
-                href="{{ route('join-club') }}"
-                class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic lg:mb-[10px] text-xl lg:text-[12px] leading-none tracking-normal"
-            >
-                Стать Партнером
+                Услуги
             </a>
             <a
                 href="{{ route('blog') }}"
@@ -44,6 +38,18 @@
                 class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic text-xl leading-none lg:text-[12px] tracking-normal"
             >
                 Контакты
+            </a>
+            <a
+                href="{{ route('partners') }}"
+                class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic lg:mb-[10px] text-xl lg:text-[12px] leading-none tracking-normal"
+            >
+                Партнёры
+            </a>
+            <a
+                href="{{ route('join-club') }}"
+                class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic lg:mb-[10px] text-xl lg:text-[12px] leading-none tracking-normal"
+            >
+                Стать Партнером
             </a>
         </div>
         <div class="flex flex-col flex-1 lg:items-center lg:mt-[40px]">
@@ -71,10 +77,14 @@
         </div>
     </div>
     <div class="mt-[125px] flex justify-between lg:flex-col lg:items-center lg:mt-[81px] lg:gap-[5px]">
-        <a href="" class="text-[#626262] font-raleway font-normal not-italic text-xs leading-none tracking-normal"
+        <a
+            href="#"
+            class="privacyPolicyBtn text-[#626262] font-raleway font-normal not-italic text-xs leading-none tracking-normal"
         >Политика конфиденциальности</a
         >
-        <a href="" class="text-[#626262] font-raleway font-normal not-italic text-xs leading-none tracking-normal"
+        <a
+            href="#"
+            class="personalDataBtn text-[#626262] font-raleway font-normal not-italic text-xs leading-none tracking-normal"
         >Согласие на обработку персональных данных</a
         >
 {{--        <a href="" class="text-[#626262] font-raleway font-normal not-italic text-xs leading-none tracking-normal"--}}

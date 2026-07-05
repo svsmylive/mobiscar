@@ -19,13 +19,13 @@
                 <button
                     class="button requestBtn whitespace-nowrap rounded-[10px] w-[296px] py-[30px] text-[white] uppercase font-bebas font-normal not-italic text-usual tracking-widest text-center leading-none text-[25px] cursor-pointer lg:text-[18px] lg:w-[185px] lg:pt-[17px] lg:pb-[13px]"
                 >
-                    Записаться
+                    Записаться в автосервис
                 </button>
-                <button
-                    class="becomePartnerBtn hover:backdrop-blur-sm duration-200 ease-in-out w-[296px] py-[30px] text-[white] uppercase font-bebas font-normal not-italic text-usual tracking-widest text-center leading-none rounded-[10px] border border-white text-[25px] cursor-pointer lg:text-[18px] lg:w-[185px] lg:pt-[17px] lg:pb-[13px]"
-                >
-                    СТАТЬ ПАРТНЁРОМ
-                </button>
+{{--                <button--}}
+{{--                    class="becomePartnerBtn hover:backdrop-blur-sm duration-200 ease-in-out w-[296px] py-[30px] text-[white] uppercase font-bebas font-normal not-italic text-usual tracking-widest text-center leading-none rounded-[10px] border border-white text-[25px] cursor-pointer lg:text-[18px] lg:w-[185px] lg:pt-[17px] lg:pb-[13px]"--}}
+{{--                >--}}
+{{--                    СТАТЬ ПАРТНЁРОМ--}}
+{{--                </button>--}}
             </div>
             <div
                 class="w-fit pr-[50px] mt-[39px] backdrop-blur-[10px] bg-[#FFFFFF1A] rounded-[15px] py-[12px] pl-[14px] flex items-center lg:mr-[39px] lg:pr-[19px]"
@@ -40,7 +40,7 @@
         </div>
     </section>
     <div class="px-[102px] bg-[#060606] lg:px-[0px]">
-        <section class="pt-[139px] lg:pt-[68px] flex flex-col items-center">
+        <section id="services" class="pt-[139px] lg:pt-[68px] flex flex-col items-center">
             <h1 class="text-center lg:text-[36px]">Полный спектр услуг</h1>
             <h4 class="mt-[19px] lg:mt-[13px]">
                 Все виды ремонта, обслуживания и детейлинга <br/>

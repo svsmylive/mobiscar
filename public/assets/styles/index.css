@@ -20,6 +20,10 @@
     --font-raleway: 'Raleway', sans-serif;
 }
 
+ol {
+    list-style: auto;
+}
+
 @layer base {
     span,
     p,
@@ -206,6 +210,23 @@
         box-shadow: 4px 4px 250px 10px #3b87d570;
         min-width: 666px;
     }
+    .modal {
+        background-color: black;
+        border-radius: 10px;
+        padding: 50px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 4px 4px 250px 10px #3b87d570;
+    }
+    .modal {
+        /* overflow: auto; */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .modal::-webkit-scrollbar {
+        display: none;
+    }
     .checkbox-custom {
         min-width: 20px;
         max-width: 20px;
@@ -273,9 +294,19 @@
             min-width: 90%;
             width: 90%;
         }
+
+        .modal {
+            padding: 20px 30px;
+            min-width: 90%;
+            /* width: 90%; */
+        }
     }
     @media (max-width: 568px) {
         .request-modal {
+            min-width: 100%;
+        }
+
+        .modal {
             min-width: 100%;
         }
     }
