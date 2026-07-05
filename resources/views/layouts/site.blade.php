@@ -867,7 +867,7 @@
 </div>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="{{ asset('/assets/js/shared.js') }}"></script>
+<script src="{{ asset('/assets/js/shared.js') }}?date={{ now() }}"></script>
 <script>
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('.requestBtn');
