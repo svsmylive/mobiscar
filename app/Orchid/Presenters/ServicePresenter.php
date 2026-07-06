@@ -37,8 +37,8 @@ class ServicePresenter extends Presenter implements Searchable, Personable
     public function url(): string
     {
         return $this->entity->type == 'Главная' ?
-            route('platform.systems.articles.edit', $this->entity) :
-            route('platform.systems.articles.edit', $this->entity);
+            route('platform.systems.services.edit', $this->entity) :
+            route('platform.systems.services.edit', $this->entity);
     }
 
     public function image(): ?string
