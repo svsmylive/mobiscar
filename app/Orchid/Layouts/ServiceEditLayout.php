@@ -18,8 +18,7 @@ class ServiceEditLayout extends Rows
         return [
             Relation::make('service.partner_id')
                 ->fromModel(Partner::class, 'name')
-                ->title('Партнёр')
-                ->required(),
+                ->title('Партнёр'),
 
             Input::make('service.name')
                 ->type('text')
