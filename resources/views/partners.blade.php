@@ -72,7 +72,7 @@
                                     >
                                     <a target="_blank" href="{{ $partner->whatsapp_link ?? "#" }}"
                                        class="button-secondary w-[268px] pt-[23px] pb-[20px] lg:w-auto lg:mx-[22px] xl:flex-1"
-                                    >НАПИСАТЬ В whatsapp</a
+                                    >НАПИСАТЬ В мессенджер</a
                                     >
                                 </div>
                                 <h3 class="text-[22px] cursor-pointer xl:mt-[25px] lg:ml-0 lg:text-[18px]"><a

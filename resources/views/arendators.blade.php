@@ -151,7 +151,7 @@
                     </p>
 
                     <div class="xl:text-center">
-                        <a class="button requestBtn mt-[35px] py-[23px] px-[62px] lg:py-[17px] lg:px-[37px] lg:mt-[20px]"
+                        <a class="button becomePartnerBtn mt-[35px] py-[23px] px-[62px] lg:py-[17px] lg:px-[37px] lg:mt-[20px]"
                            href="#"
                         >ОСТАВИТЬ ЗАЯВКУ</a
                         >
@@ -911,7 +911,7 @@
                         class="relative z-10 font-bebas text-[35px] leading-none tracking-[4%] text-white mt-[23px] lg:mt-[18px] lg:text-[22px]"
                     >Сосредоточьтесь на деле, а не на организационных вопросах</span
                     >
-                    <a class="relative requestBtn z-10 button mt-[33px] py-[21px] px-[63px] lg:px-[33px] lg:whitespace-nowrap"
+                    <a class="relative becomePartnerBtn z-10 button mt-[33px] py-[21px] px-[63px] lg:px-[33px] lg:whitespace-nowrap"
                        href="#"
                     >ОСТАВИТЬ ЗАЯВКУ</a
                     >
@@ -1116,7 +1116,7 @@
             </div>
 
             <div class="mt-[50px] flex justify-center">
-                <a class="button requestBtn py-[23px] px-[63px] lg:py-[17px] lg:px-[34px]" href="#">ОСТАВИТЬ ЗАЯВКУ</a>
+                <a class="button becomePartnerBtn py-[23px] px-[63px] lg:py-[17px] lg:px-[34px]" href="#">ОСТАВИТЬ ЗАЯВКУ</a>
             </div>
         </section>
 
@@ -1251,7 +1251,7 @@
             </div>
 
             <div class="text-center mt-[69px] lg:mt-[30px]">
-                <a href="#" class="button requestBtn rounded-[10px] py-[23px] px-[63px]">ОСТАВИТЬ ЗАЯВКУ</a>
+                <a href="#" class="button becomePartnerBtn rounded-[10px] py-[23px] px-[63px]">ОСТАВИТЬ ЗАЯВКУ</a>
             </div>
 
             <div class="w-full mt-[162px] lg:mt-[154px] relative">

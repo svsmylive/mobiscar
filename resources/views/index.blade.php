@@ -128,22 +128,22 @@
                 >
             </div>
         </section>
-        <section class="pt-[75px] lg:pt-[150px]">
-            <h2 class="text-center lg:px-[5px]">Автоклуб Мобискар <br/>Территория ремонта и творчества</h2>
-            <h3 class="mt-[25px] lg:mt-[17px]">
-                Сообщество компаний в сфере ремонта и детейлинга, <br/>
-                являющихся лидерами в своих отраслях
-            </h3>
-            <ul class="mt-[47px] flex justify-between px-[100px] xl:flex-col xl:items-center xl:gap-[17px] xl:mt-[52px] xl:px-[0]">
-                @foreach($partners as $partner)
-                    <li
-                        class="whitespace-nowrap text-[#7D7D7D] font-bebas font-normal not-italic text-[35px] leading-none tracking-widest uppercase"
-                    >
-                        {{ $partner->name }}
-                    </li>
-                @endforeach
-            </ul>
-        </section>
+{{--        <section class="pt-[75px] lg:pt-[150px]">--}}
+{{--            <h2 class="text-center lg:px-[5px]">Автоклуб Мобискар <br/>Территория ремонта и творчества</h2>--}}
+{{--            <h3 class="mt-[25px] lg:mt-[17px]">--}}
+{{--                Сообщество компаний в сфере ремонта и детейлинга, <br/>--}}
+{{--                являющихся лидерами в своих отраслях--}}
+{{--            </h3>--}}
+{{--            <ul class="mt-[47px] flex justify-between px-[100px] xl:flex-col xl:items-center xl:gap-[17px] xl:mt-[52px] xl:px-[0]">--}}
+{{--                @foreach($partners as $partner)--}}
+{{--                    <li--}}
+{{--                        class="whitespace-nowrap text-[#7D7D7D] font-bebas font-normal not-italic text-[35px] leading-none tracking-widest uppercase"--}}
+{{--                    >--}}
+{{--                        {{ $partner->name }}--}}
+{{--                    </li>--}}
+{{--                @endforeach--}}
+{{--            </ul>--}}
+{{--        </section>--}}
         <section class="pt-[195px] lg:pt-[101px]">
             <h2 class="text-center">
                 Партнёры Мобискар — те,<br class="hidden lg:inline"/>

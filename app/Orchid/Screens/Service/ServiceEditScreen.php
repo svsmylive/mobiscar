@@ -72,7 +72,7 @@ class ServiceEditScreen extends Screen
     public function save(Service $service, Request $request): RedirectResponse
     {
         $data = $request->validate([
-            'service.partner_id' => ['required', 'integer', 'exists:partners,id'],
+            'service.partner_id' => ['nullable', 'integer', 'exists:partners,id'],
             'service.name' => ['required', 'string', 'max:255'],
             'service.slug' => ['nullable', 'string', 'max:255'],
             'service.preview_text' => ['nullable', 'string'],
