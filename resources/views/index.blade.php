@@ -122,10 +122,10 @@
                 >
                     ЗАПИСАТЬСЯ <span class="inline lg:hidden">НА ДИАГНОСТИКУ</span>
                 </button>
-                <a
-                    class="hidden lg:inline cursor-pointer text-white mt-[25px] font-bebas font-normal text-[20px] leading-none tracking-[0.03em] text-center uppercase"
-                >все услуги</a
-                >
+{{--                <a--}}
+{{--                    class="hidden lg:inline cursor-pointer text-white mt-[25px] font-bebas font-normal text-[20px] leading-none tracking-[0.03em] text-center uppercase"--}}
+{{--                >все услуги</a--}}
+{{--                >--}}
             </div>
         </section>
 {{--        <section class="pt-[75px] lg:pt-[150px]">--}}

@@ -17,6 +17,7 @@ class ServiceEditLayout extends Rows
     {
         return [
             Relation::make('service.partner_id')
+                ->nullable()
                 ->fromModel(Partner::class, 'name')
                 ->title('Партнёр'),
 
