@@ -19,7 +19,7 @@
                 <button
                     class="button requestBtn whitespace-nowrap rounded-[10px] w-[296px] py-[30px] text-[white] uppercase font-bebas font-normal not-italic text-usual tracking-widest text-center leading-none text-[25px] cursor-pointer lg:text-[18px] lg:w-[185px] lg:pt-[17px] lg:pb-[13px]"
                 >
-                    Записаться в автосервис
+                    Записаться
                 </button>
 {{--                <button--}}
 {{--                    class="becomePartnerBtn hover:backdrop-blur-sm duration-200 ease-in-out w-[296px] py-[30px] text-[white] uppercase font-bebas font-normal not-italic text-usual tracking-widest text-center leading-none rounded-[10px] border border-white text-[25px] cursor-pointer lg:text-[18px] lg:w-[185px] lg:pt-[17px] lg:pb-[13px]"--}}
