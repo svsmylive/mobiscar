@@ -15,6 +15,42 @@
     />
     <link rel="canonical" href="https://mobiscar-krasnodar.ru{{ request()->getPathInfo() }}">
     <link rel="icon" href="{{ asset('/assets/images/favicon.ico') }}" type="image/x-icon">
+    <style>
+        /* Уведомление об отправке формы.
+           Ширину задаём явно: без неё position:fixed + left:50% ужимает блок
+           до половины экрана, и на телефоне текст вытягивается в узкую колонку. */
+        .app-popup {
+            display: none;
+            position: fixed;
+            top: calc(20px + env(safe-area-inset-top, 0px));
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 460px;
+            box-sizing: border-box;
+            padding: 14px 26px;
+            background: #3B87D5;
+            color: #fff;
+            border-radius: 10px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            line-height: 1.25;
+            letter-spacing: 0.03em;
+            text-align: center;
+            z-index: 99999;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 640px) {
+            .app-popup {
+                top: calc(12px + env(safe-area-inset-top, 0px));
+                padding: 12px 18px;
+                font-size: 16px;
+            }
+        }
+    </style>
     @stack('styles')
 </head>
 
@@ -174,25 +210,7 @@
         </form>
     </div>
 </div>
-<div id="app-popup"
-     style="
-        display: none;
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #3B87D5;
-        color: white;
-        padding: 14px 26px;
-        border-radius: 10px;
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 22px;
-        z-index: 99999;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-     ">
-</div>
+<div id="app-popup" class="app-popup"></div>
 
 <!-- privacy policy modal -->
 <div id="privacyPolicyModal" class="request-modal-overlay modal-wrapper bg-black">
@@ -899,6 +917,17 @@
         if (el) el.value = String(Date.now());
     }
 
+    // Защита хостинга (Beget) отдаёт POST-запросам 405 Not Allowed, если нет cookie beget=begetok.
+    // Её ставит JS-заглушка хостинга, но iOS Safari (ITP) обрезает срок жизни такой cookie
+    // до 7 суток (в приватном режиме — до конца сессии), после чего отправка формы падает с 405.
+    // Обновляем cookie при каждой загрузке страницы и повторно перед ретраем запроса.
+    function setBegetCookie() {
+        const expires = new Date(Date.now() + 19360000 * 1000).toUTCString();
+        document.cookie = 'beget=begetok; expires=' + expires + '; path=/';
+    }
+
+    setBegetCookie();
+
     function getQueryParam(name) {
         const url = new URL(window.location.href);
         return url.searchParams.get(name) || '';
@@ -929,12 +958,28 @@
         const requestForm = document.getElementById("application-form");
         const partnerForm = document.getElementById("partner-form");
 
+        // В iOS Safari position:fixed считается от layout viewport, поэтому при
+        // свёрнутой/разворачивающейся адресной строке блок уезжает выше видимой области.
+        // Привязываем его к visualViewport, если он доступен.
+        function positionPopup() {
+            if (!popup || !window.visualViewport) return;
+
+            const offset = window.innerWidth <= 640 ? 12 : 20;
+            popup.style.top = (window.visualViewport.offsetTop + offset) + "px";
+        }
+
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener("resize", positionPopup);
+            window.visualViewport.addEventListener("scroll", positionPopup);
+        }
+
         function showPopup(message, isSuccess = true) {
             if (!popup) return;
 
             popup.textContent = message;
             popup.style.background = isSuccess ? "#3B87D5" : "#D53939";
             popup.style.display = "block";
+            positionPopup();
 
             requestAnimationFrame(() => {
                 popup.style.opacity = "1";
@@ -979,6 +1024,51 @@
             return phone.replace(/\D/g, "").length === 11;
         }
 
+        function send(form, fd) {
+            return fetch(form.action, {
+                method: "POST",
+                body: fd,
+                credentials: "same-origin",
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                    "Accept": "application/json"
+                }
+            });
+        }
+
+        // Ответ может прийти не от Laravel (HTML-страница 405/502 от nginx) — не роняем обработчик.
+        async function readJson(response) {
+            try {
+                return await response.json();
+            } catch (e) {
+                return null;
+            }
+        }
+
+        async function refreshCsrfToken(form, fd) {
+            try {
+                const response = await fetch("{{ route('csrf.token') }}", {
+                    credentials: "same-origin",
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest",
+                        "Accept": "application/json"
+                    }
+                });
+
+                const data = await readJson(response);
+
+                if (!data || !data.token) return false;
+
+                const field = form.querySelector('input[name="_token"]');
+                if (field) field.value = data.token;
+                fd.set("_token", data.token);
+
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
         function initForm(form, modal) {
             if (!form) return;
 
@@ -1009,15 +1099,31 @@
                 fd.set("phone", phoneInput.value.replace(/\D/g, ""));
 
                 try {
-                    const response = await fetch(form.action, {
-                        method: "POST",
-                        body: fd,
-                        headers: {
-                            "X-Requested-With": "XMLHttpRequest"
-                        }
-                    });
+                    let response = await send(form, fd);
 
-                    const data = await response.json();
+                    // 405 отдаёт не Laravel, а анти-бот хостинга: cookie потерялась — ставим её и повторяем.
+                    if (response.status === 405) {
+                        setBegetCookie();
+                        response = await send(form, fd);
+                    }
+
+                    // 419 — истёкшая сессия (вкладка провисела дольше SESSION_LIFETIME):
+                    // берём свежий CSRF-токен и повторяем отправку.
+                    if (response.status === 419 && await refreshCsrfToken(form, fd)) {
+                        response = await send(form, fd);
+                    }
+
+                    const data = await readJson(response);
+
+                    if (!data || typeof data.success === "undefined") {
+                        showPopup(
+                            response.status === 419
+                                ? "Страница устарела. Обновите её и попробуйте снова."
+                                : "Ошибка отправки. Попробуйте позже.",
+                            false
+                        );
+                        return;
+                    }
 
                     showPopup(data.msg, data.success);
 
@@ -1043,14 +1149,14 @@
 </script>
 @stack('scripts')
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110465250-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+{{--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110465250-1"></script>--}}
+{{--<script>--}}
+{{--    window.dataLayer = window.dataLayer || [];--}}
+{{--    function gtag(){dataLayer.push(arguments);}--}}
+{{--    gtag('js', new Date());--}}
 
-    gtag('config', 'UA-110465250-1');
-</script>
+{{--    gtag('config', 'UA-110465250-1');--}}
+{{--</script>--}}
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">

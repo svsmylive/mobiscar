@@ -15,6 +15,12 @@ Route::post('application', [ApplicationController::class, 'send'])->middleware('
 );
 Route::get('/services/{slug}', [PageController::class, 'serviceBySlug'])->name('service_by_slug');
 
+// Свежий CSRF-токен для форм на странице, которая долго провисела открытой
+// (типично для мобильных: вкладка в фоне дольше SESSION_LIFETIME -> 419).
+Route::get('csrf-token', function () {
+    return response()->json(['token' => csrf_token()]);
+})->name('csrf.token');
+
 Route::fallback(function () {
     return view('404');
 });
