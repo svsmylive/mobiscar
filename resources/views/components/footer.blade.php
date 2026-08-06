@@ -27,24 +27,24 @@
             >
                 Услуги
             </a>
-            <a
-                href="{{ route('blog') }}"
-                class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic lg:mb-[10px] text-xl lg:text-[12px] leading-none tracking-normal"
-            >
-                Блог
-            </a>
+{{--            <a--}}
+{{--                href="{{ route('blog') }}"--}}
+{{--                class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic lg:mb-[10px] text-xl lg:text-[12px] leading-none tracking-normal"--}}
+{{--            >--}}
+{{--                Блог--}}
+{{--            </a>--}}
             <a
                 href="{{ route('contacts') }}"
                 class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic text-xl leading-none lg:text-[12px] tracking-normal"
             >
                 Контакты
             </a>
-            <a
-                href="{{ route('partners') }}"
-                class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic lg:mb-[10px] text-xl lg:text-[12px] leading-none tracking-normal"
-            >
-                Партнёры
-            </a>
+{{--            <a--}}
+{{--                href="{{ route('partners') }}"--}}
+{{--                class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic lg:mb-[10px] text-xl lg:text-[12px] leading-none tracking-normal"--}}
+{{--            >--}}
+{{--                Партнёры--}}
+{{--            </a>--}}
             <a
                 href="{{ route('join-club') }}"
                 class="text-[#F5F5F5] mb-[14px] font-raleway font-normal not-italic lg:mb-[10px] text-xl lg:text-[12px] leading-none tracking-normal"

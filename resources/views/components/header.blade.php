@@ -14,20 +14,20 @@
                 Услуги
             </a>
 
-            <a href="{{ route('blog') }}"
-               class="navlink hover:border-b-white {{ request()->routeIs('blog') ? 'border-b-white' : '' }}">
-                Блог
-            </a>
+{{--            <a href="{{ route('blog') }}"--}}
+{{--               class="navlink hover:border-b-white {{ request()->routeIs('blog') ? 'border-b-white' : '' }}">--}}
+{{--                Блог--}}
+{{--            </a>--}}
 
             <a href="{{ route('contacts') }}"
                class="navlink hover:border-b-white {{ request()->routeIs('contacts') ? 'border-b-white' : '' }}">
                 Контакты
             </a>
 
-            <a href="{{ route('partners') }}"
-               class="navlink hover:border-b-white {{ request()->routeIs('partners') ? 'border-b-white' : '' }}">
-                Партнёры
-            </a>
+{{--            <a href="{{ route('partners') }}"--}}
+{{--               class="navlink hover:border-b-white {{ request()->routeIs('partners') ? 'border-b-white' : '' }}">--}}
+{{--                Партнёры--}}
+{{--            </a>--}}
 
             <a href="{{ route('join-club') }}"
                class="navlink hover:border-b-white {{ request()->routeIs('join-club') ? 'border-b-white' : '' }}">
