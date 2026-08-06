@@ -73,9 +73,9 @@
             <div class="mt-[36px] pl-[19px] flex flex-col gap-[15px]">
                 <a href="/" class="navlink justify-start!">Главная </a>
                 <a href="/#services" class="navlink justify-start!">Услуги </a>
-                <a href="/blog" class="navlink justify-start!">Блог</a>
+{{--                <a href="/blog" class="navlink justify-start!">Блог</a>--}}
                 <a href="/contacts" class="navlink justify-start!">Контакты</a>
-                <a href="/partners" class="navlink justify-start!">Партнёры</a>
+{{--                <a href="/partners" class="navlink justify-start!">Партнёры</a>--}}
                 <a href="/join-club/" class="navlink justify-start!">Стать Партнером</a>
             </div>
 
